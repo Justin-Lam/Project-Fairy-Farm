@@ -4,7 +4,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
 	[Header("Movement")]
-	[SerializeField] float moveSpeed;
+	[SerializeField] float maxVelocity;
+	[SerializeField] float acceleration;
+	[SerializeField] float turningAccelMultiplier;
+	[SerializeField][Tooltip("(in degrees)")] float multiplierMinThreshold;
+	[SerializeField] float deceleration;
 	Rigidbody2D rb;
 	Vector2 moveDir;
 
@@ -21,6 +25,35 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		rb.velocity = moveDir * moveSpeed;
+		if (moveDir != Vector2.zero) Accelerate();
+		else Decelerate();
+	}
+
+	void Accelerate()
+	{
+		// Code based from https://www.reddit.com/r/Unity2D/comments/16w3v3s/comment/k2un48s/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+
+		// Get the direction we need to go to get to where we want to go (deltaVelocity)
+		Vector2 currentVelocity = rb.velocity;
+		Vector2 targetVelocity = moveDir * maxVelocity;
+		Vector2 deltaVelocity = targetVelocity - currentVelocity;
+
+		// Get the acceleration vector and make sure it doesn't overshoot the amount we need to go
+		float multiplier = (Vector2.Angle(currentVelocity, moveDir) > multiplierMinThreshold) ? turningAccelMultiplier : 1f;
+		Vector2 accelerationVector = deltaVelocity.normalized * acceleration * multiplier * Time.deltaTime;
+		if (accelerationVector.sqrMagnitude > deltaVelocity.sqrMagnitude) accelerationVector = deltaVelocity;	// sqrMagnitude is faster to get than actual magnitude
+
+		rb.velocity += accelerationVector;
+		rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
+	}
+
+	void Decelerate()
+	{
+		// Code based from https://www.reddit.com/r/Unity2D/comments/16w3v3s/comment/k2un48s/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+
+		Vector2 decelerationVector = -rb.velocity.normalized * deceleration * Time.deltaTime;
+		
+		rb.velocity += decelerationVector;
+		if (Vector2.Dot(rb.velocity, decelerationVector) > 0f) rb.velocity = Vector2.zero;	// if now going backwards (the vectors point in the same direction)
 	}
 }
