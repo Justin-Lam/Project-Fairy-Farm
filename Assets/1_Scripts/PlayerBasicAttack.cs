@@ -3,17 +3,32 @@ using UnityEngine;
 
 public class PlayerBasicAttack : MonoBehaviour
 {
-	[SerializeField] float chargeDuration;
+	[SerializeField] public float chargeDuration;
 	[SerializeField] float velocity;
 	[SerializeField] float lifespan;
 	[SerializeField] BasicAttack projectile;
 	bool charging = false;
-	float chargeCounter = 0;
+	[HideInInspector] public float chargeCounter = 0;
 
 	public static event Action OnCharge;
 	public static event Action OnFire;
 
 	PlayerMovement playerMovementScript;
+
+	[Header("Singleton Pattern")]
+	private static PlayerBasicAttack instance;
+	public static PlayerBasicAttack Instance { get { return instance; } }
+	void SetSingletonInstance()
+	{
+		if (instance != null && instance != this)
+		{
+			Destroy(gameObject);
+		}
+		else
+		{
+			instance = this;
+		}
+	}
 
 	// "On" functions are called by the Player Input component
 	void OnChargeBasic()
@@ -31,6 +46,7 @@ public class PlayerBasicAttack : MonoBehaviour
 
 	void Awake()
 	{
+		SetSingletonInstance();
 		playerMovementScript = GetComponent<PlayerMovement>();
 	}
 
