@@ -17,7 +17,7 @@ public class StateMachine : MonoBehaviour
 	 *	List<TransitionStatePair> = Transitions
 	 *	Dictionary<State, Transitions> = TransitionDictionary
 	 *	
-	 *	This.transitions holds the network of transitions for this state machine
+	 *	transitions_dict holds the network of transitions for this state machine
 	 *	And defines how the game object will move from state to state
 	 *	These are typically read from data and built at initialization time
 	 *	

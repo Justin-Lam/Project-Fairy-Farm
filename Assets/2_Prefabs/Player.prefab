@@ -287,5 +287,5 @@ MonoBehaviour:
   chargeDuration: 0.625
   velocity: 30
   lifespan: 0.5
-  projectile: {fileID: 0}
+  projectilePrefab: {fileID: 3322017313761106791, guid: 44e02018bcb23c14685e37ea22016d03, type: 3}
   chargeCounter: 0
