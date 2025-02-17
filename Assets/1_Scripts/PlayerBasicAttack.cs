@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerBasicAttack : MonoBehaviour
@@ -9,20 +10,23 @@ public class PlayerBasicAttack : MonoBehaviour
 	bool charging = false;
 	float chargeCounter = 0;
 
+	public static event Action OnCharge;
+	public static event Action OnFire;
+
 	PlayerMovement playerMovementScript;
 
 	// "On" functions are called by the Player Input component
 	void OnChargeBasic()
 	{
 		charging = true;
-		playerMovementScript.canMove = false;
+		OnCharge?.Invoke();
 	}
 	void OnFireBasic()
 	{
 		if (chargeCounter >= chargeDuration) Fire();
 		chargeCounter = 0;
 		charging = false;
-		playerMovementScript.canMove = true;
+		OnFire?.Invoke();
 	}
 
 	void Awake()

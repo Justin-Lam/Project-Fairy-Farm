@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BasicAttackMeter : MonoBehaviour
@@ -8,6 +9,17 @@ public class BasicAttackMeter : MonoBehaviour
 	void Awake()
 	{
 		canvas = GetComponent<Canvas>();
+	}
+
+	void OnEnable()
+	{
+		PlayerBasicAttack.OnCharge += () => canvas.enabled = true;
+		PlayerBasicAttack.OnFire += () => canvas.enabled = false;
+	}
+	void OnDisable()
+	{
+		PlayerBasicAttack.OnCharge -= () => canvas.enabled = true;
+		PlayerBasicAttack.OnFire -= () => canvas.enabled = false;
 	}
 
 	void Update()

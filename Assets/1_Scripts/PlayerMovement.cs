@@ -10,8 +10,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] float deceleration;
 	Rigidbody2D rb;
 	Vector2 moveDir;
-
-	[HideInInspector] public bool canMove = true;
+	bool canMove = true;
 
 	// "On" functions are called by the Player Input component
 	void OnMove(InputValue iv)
@@ -22,6 +21,17 @@ public class PlayerMovement : MonoBehaviour
 	void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
+	}
+
+	void OnEnable()
+	{
+		PlayerBasicAttack.OnCharge += () => canMove = false;
+		PlayerBasicAttack.OnFire += () => canMove = true;
+	}
+	void OnDisable()
+	{
+		PlayerBasicAttack.OnCharge -= () => canMove = false;
+		PlayerBasicAttack.OnFire -= () => canMove = true;
 	}
 
 	void FixedUpdate()
