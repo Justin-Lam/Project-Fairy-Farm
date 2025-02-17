@@ -35,6 +35,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Charge Basic"",
+                    ""type"": ""Button"",
+                    ""id"": ""d100a2ab-0c8c-41fd-8d05-940d8fe398dc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire Basic"",
+                    ""type"": ""Button"",
+                    ""id"": ""fc1c3249-4d25-4352-be21-811c3d1136fe"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -92,6 +110,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b2bdf83f-ee21-4297-8894-bafceed63cb6"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Charge Basic"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8670b35d-3d00-496d-8256-bfff34a51ecd"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire Basic"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -101,6 +141,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // Combat
         m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
         m_Combat_Move = m_Combat.FindAction("Move", throwIfNotFound: true);
+        m_Combat_ChargeBasic = m_Combat.FindAction("Charge Basic", throwIfNotFound: true);
+        m_Combat_FireBasic = m_Combat.FindAction("Fire Basic", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -168,11 +210,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Combat;
     private List<ICombatActions> m_CombatActionsCallbackInterfaces = new List<ICombatActions>();
     private readonly InputAction m_Combat_Move;
+    private readonly InputAction m_Combat_ChargeBasic;
+    private readonly InputAction m_Combat_FireBasic;
     public struct CombatActions
     {
         private @Controls m_Wrapper;
         public CombatActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Combat_Move;
+        public InputAction @ChargeBasic => m_Wrapper.m_Combat_ChargeBasic;
+        public InputAction @FireBasic => m_Wrapper.m_Combat_FireBasic;
         public InputActionMap Get() { return m_Wrapper.m_Combat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -185,6 +231,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @ChargeBasic.started += instance.OnChargeBasic;
+            @ChargeBasic.performed += instance.OnChargeBasic;
+            @ChargeBasic.canceled += instance.OnChargeBasic;
+            @FireBasic.started += instance.OnFireBasic;
+            @FireBasic.performed += instance.OnFireBasic;
+            @FireBasic.canceled += instance.OnFireBasic;
         }
 
         private void UnregisterCallbacks(ICombatActions instance)
@@ -192,6 +244,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @ChargeBasic.started -= instance.OnChargeBasic;
+            @ChargeBasic.performed -= instance.OnChargeBasic;
+            @ChargeBasic.canceled -= instance.OnChargeBasic;
+            @FireBasic.started -= instance.OnFireBasic;
+            @FireBasic.performed -= instance.OnFireBasic;
+            @FireBasic.canceled -= instance.OnFireBasic;
         }
 
         public void RemoveCallbacks(ICombatActions instance)
@@ -212,5 +270,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public interface ICombatActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnChargeBasic(InputAction.CallbackContext context);
+        void OnFireBasic(InputAction.CallbackContext context);
     }
 }

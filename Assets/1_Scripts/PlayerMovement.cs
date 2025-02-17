@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-	[Header("Movement")]
 	[SerializeField] float maxVelocity;
 	[SerializeField] float acceleration;
 	[SerializeField] float turningAccelMultiplier;
@@ -12,7 +11,7 @@ public class PlayerController : MonoBehaviour
 	Rigidbody2D rb;
 	Vector2 moveDir;
 
-	// Called by the Player Input component
+	// "On" functions are called by the Player Input component
 	void OnMove(InputValue iv)
 	{
 		moveDir = iv.Get<Vector2>();
