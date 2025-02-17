@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+// All state machine related scripts are based from http://www.gameaipro.com/GameAIPro3/GameAIPro3_Chapter12_A_Reusable_Light-Weight_Finite-State_Machine.pdf.
+
 using UnityEngine;
 
-public class StateTransition : MonoBehaviour
+// This is a base factory class
+public abstract class StateTransition : MonoBehaviour
 {
-	// Start is called before the first frame update
-	void Start()
+	protected GameObject owner;
+
+	public StateTransition(GameObject owner)
 	{
-		
+		this.owner = owner;
 	}
 
-	// Update is called once per frame
-	void Update()
-	{
-		
-	}
+	public abstract bool ToTransition();
 }

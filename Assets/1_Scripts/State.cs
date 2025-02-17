@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-// This is a factory for actual states
+// This is a base factory class
 public abstract class State : MonoBehaviour
 {
 	protected GameObject owner;
