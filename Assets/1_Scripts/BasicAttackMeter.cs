@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,11 +7,13 @@ public class BasicAttackMeter : MonoBehaviour
 	[SerializeField] Vector2 offsetFromMouse;
 	Canvas canvas;
 	Slider slider;
+	TMP_Text text;
 
 	void Awake()
 	{
 		canvas = GetComponent<Canvas>();
 		slider = GetComponentInChildren<Slider>();
+		text = GetComponentInChildren<TMP_Text>();
 	}
 
 	void OnEnable()
@@ -32,5 +35,8 @@ public class BasicAttackMeter : MonoBehaviour
 		float counter = PlayerBasicAttack.Instance.chargeCounter;
 		float duration = PlayerBasicAttack.Instance.chargeDuration;
 		slider.value = counter / duration;
+
+		if (counter >= duration) text.enabled = true;
+		else text.enabled = false;
 	}
 }
