@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] float deceleration;
 	Rigidbody2D rb;
 	Vector2 moveDir;
+	public bool canMove = true;
 
 	// "On" functions are called by the Player Input component
 	void OnMove(InputValue iv)
@@ -24,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if (moveDir != Vector2.zero) Accelerate();
+		if (moveDir != Vector2.zero && canMove) Accelerate();
 		else Decelerate();
 	}
 
