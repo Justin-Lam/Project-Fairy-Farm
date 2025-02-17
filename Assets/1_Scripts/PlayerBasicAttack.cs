@@ -3,6 +3,9 @@ using UnityEngine;
 public class PlayerBasicAttack : MonoBehaviour
 {
 	[SerializeField] float chargeDuration;
+	[SerializeField] float velocity;
+	[SerializeField] float lifespan;
+	[SerializeField] BasicAttack projectile;
 	bool charging = false;
 	float chargeCounter = 0;
 
@@ -34,6 +37,8 @@ public class PlayerBasicAttack : MonoBehaviour
 
 	void Fire()
 	{
-
+		projectile.transform.position = transform.position;
+		projectile.gameObject.SetActive(true);
+		projectile.Fire(velocity, lifespan);
 	}
 }

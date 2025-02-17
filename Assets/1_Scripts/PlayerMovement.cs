@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] float deceleration;
 	Rigidbody2D rb;
 	Vector2 moveDir;
-	public bool canMove = true;
+
+	[HideInInspector] public bool canMove = true;
 
 	// "On" functions are called by the Player Input component
 	void OnMove(InputValue iv)
