@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SnowQueenHealthBar : MonoBehaviour
 {
-	Slider healthBar;
+	[SerializeField] Slider slider;
+	[SerializeField] TMP_Text text;
 
 	[Header("Singleton Pattern")]
 	private static SnowQueenHealthBar instance;
@@ -17,7 +19,6 @@ public class SnowQueenHealthBar : MonoBehaviour
 	void Awake()
 	{
 		InitializeSingleton();
-		healthBar = GetComponentInChildren<Slider>();
 	}
 
 	void OnEnable()
@@ -31,6 +32,10 @@ public class SnowQueenHealthBar : MonoBehaviour
 
 	void OnDamaged()
 	{
-		healthBar.value = SnowQueen_Health.Instance.health / SnowQueen_Health.Instance.maxHealth;
+		float maxhealth = SnowQueen_Health.Instance.maxHealth;
+		float health = SnowQueen_Health.Instance.health;
+
+		slider.value =  health / maxhealth;
+		text.text = $"{health} / {maxhealth}";
 	}
 }

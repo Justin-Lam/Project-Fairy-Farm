@@ -27,7 +27,8 @@ public class SnowQueen_Health : MonoBehaviour
 	public void TakeDamage(float damage)
 	{
 		health -= damage;
+		if (health < 0) health = 0;
 		OnDamaged?.Invoke();
-		if (health < 0) OnDeath?.Invoke();
+		if (health <= 0) OnDeath?.Invoke();
 	}
 }
