@@ -172,8 +172,8 @@ GameObject:
   - component: {fileID: 6435265369743228265}
   - component: {fileID: 6410891995657181042}
   - component: {fileID: 1321322526657147200}
-  - component: {fileID: 4863034473872606732}
-  - component: {fileID: 1220826733530279772}
+  - component: {fileID: 3165893697131347687}
+  - component: {fileID: 6650993517049404194}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_DefaultActionMap: Combat
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &4863034473872606732
+--- !u!114 &3165893697131347687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6323655051593238696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1f6d9ae046054d4fa664fff2df017c1, type: 3}
+  m_Script: {fileID: 11500000, guid: d21a454fd2c62d540a480ce25b0b1196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxVelocity: 5
@@ -272,7 +272,7 @@ MonoBehaviour:
   turningAccelMultiplier: 3
   multiplierMinThreshold: 30
   deceleration: 20
---- !u!114 &1220826733530279772
+--- !u!114 &6650993517049404194
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6323655051593238696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b95eaed08f302846a47c5cfd91ef2b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 349a9e9d1e9c0504b8b24b594533a48a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30

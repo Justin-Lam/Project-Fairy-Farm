@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class SnowQueen : MonoBehaviour
+public class SnowQueen_Health : MonoBehaviour
 {
 	[SerializeField] public float maxHealth;
 	[HideInInspector] public float health;
@@ -10,8 +10,8 @@ public class SnowQueen : MonoBehaviour
 	public static event Action OnDeath;
 
 	[Header("Singleton Pattern")]
-	private static SnowQueen instance;
-	public static SnowQueen Instance { get { return instance; } }
+	private static SnowQueen_Health instance;
+	public static SnowQueen_Health Instance { get { return instance; } }
 	void InitializeSingleton()
 	{
 		if (instance && instance != this) Destroy(gameObject);

@@ -18,13 +18,13 @@ public class BasicAttackMeter : MonoBehaviour
 
 	void OnEnable()
 	{
-		PlayerBasicAttack.OnCharge += () => canvas.enabled = true;
-		PlayerBasicAttack.OnFire += () => canvas.enabled = false;
+		Player_BasicAttack.OnCharge += () => canvas.enabled = true;
+		Player_BasicAttack.OnFire += () => canvas.enabled = false;
 	}
 	void OnDisable()
 	{
-		PlayerBasicAttack.OnCharge -= () => canvas.enabled = true;
-		PlayerBasicAttack.OnFire -= () => canvas.enabled = false;
+		Player_BasicAttack.OnCharge -= () => canvas.enabled = true;
+		Player_BasicAttack.OnFire -= () => canvas.enabled = false;
 	}
 
 	void Update()
@@ -32,8 +32,8 @@ public class BasicAttackMeter : MonoBehaviour
 		Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		transform.position = mousePos + offsetFromMouse;
 
-		float counter = PlayerBasicAttack.Instance.chargeCounter;
-		float duration = PlayerBasicAttack.Instance.chargeDuration;
+		float counter = Player_BasicAttack.Instance.chargeCounter;
+		float duration = Player_BasicAttack.Instance.chargeDuration;
 		slider.value = counter / duration;
 
 		if (counter >= duration) text.enabled = true;

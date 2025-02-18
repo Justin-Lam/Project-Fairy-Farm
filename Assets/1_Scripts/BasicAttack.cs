@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BasicAttack : MonoBehaviour
@@ -30,7 +29,7 @@ public class BasicAttack : MonoBehaviour
 		if (collision.gameObject.CompareTag("Player")) return;
 
 		if (collision.gameObject.CompareTag("Enemy"))
-			collision.gameObject.transform.GetComponentInParent<SnowQueen>().TakeDamage(PlayerBasicAttack.Instance.damage);
+			collision.gameObject.transform.GetComponentInParent<SnowQueen_Health>().TakeDamage(Player_BasicAttack.Instance.damage);
 
 		gameObject.SetActive(false);
 	}

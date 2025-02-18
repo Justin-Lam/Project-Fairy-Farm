@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerBasicAttack : MonoBehaviour
+public class Player_BasicAttack : MonoBehaviour
 {
 	[SerializeField] public float damage;
 	[SerializeField] public float chargeDuration;
@@ -15,11 +15,11 @@ public class PlayerBasicAttack : MonoBehaviour
 	public static event Action OnCharge;
 	public static event Action OnFire;
 
-	PlayerMovement playerMovementScript;
+	Player_Movement playerMovementScript;
 
 	[Header("Singleton Pattern")]
-	private static PlayerBasicAttack instance;
-	public static PlayerBasicAttack Instance { get { return instance; } }
+	private static Player_BasicAttack instance;
+	public static Player_BasicAttack Instance { get { return instance; } }
 	void InitializeSingleton()
 	{
 		if (instance && instance != this) Destroy(gameObject);
@@ -45,7 +45,7 @@ public class PlayerBasicAttack : MonoBehaviour
 		InitializeSingleton();
 		projectile = Instantiate(projectilePrefab);
 		projectile.SetActive(false);
-		playerMovementScript = GetComponent<PlayerMovement>();
+		playerMovementScript = GetComponent<Player_Movement>();
 	}
 
 	void Update()

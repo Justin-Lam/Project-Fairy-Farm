@@ -22,15 +22,15 @@ public class SnowQueenHealthBar : MonoBehaviour
 
 	void OnEnable()
 	{
-		SnowQueen.OnDamaged += OnDamaged;
+		SnowQueen_Health.OnDamaged += OnDamaged;
 	}
 	void OnDisable()
 	{
-		SnowQueen.OnDamaged -= OnDamaged;
+		SnowQueen_Health.OnDamaged -= OnDamaged;
 	}
 
 	void OnDamaged()
 	{
-		healthBar.value = SnowQueen.Instance.health / SnowQueen.Instance.maxHealth;
+		healthBar.value = SnowQueen_Health.Instance.health / SnowQueen_Health.Instance.maxHealth;
 	}
 }

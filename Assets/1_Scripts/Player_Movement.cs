@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class Player_Movement : MonoBehaviour
 {
 	[SerializeField] float maxVelocity;
 	[SerializeField] float acceleration;
@@ -25,13 +25,13 @@ public class PlayerMovement : MonoBehaviour
 
 	void OnEnable()
 	{
-		PlayerBasicAttack.OnCharge += () => canMove = false;
-		PlayerBasicAttack.OnFire += () => canMove = true;
+		Player_BasicAttack.OnCharge += () => canMove = false;
+		Player_BasicAttack.OnFire += () => canMove = true;
 	}
 	void OnDisable()
 	{
-		PlayerBasicAttack.OnCharge -= () => canMove = false;
-		PlayerBasicAttack.OnFire -= () => canMove = true;
+		Player_BasicAttack.OnCharge -= () => canMove = false;
+		Player_BasicAttack.OnFire -= () => canMove = true;
 	}
 
 	void FixedUpdate()
