@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerBasicAttack : MonoBehaviour
 {
-	[SerializeField] float damage;
+	[SerializeField] public float damage;
 	[SerializeField] public float chargeDuration;
 	[SerializeField] float velocity;
 	[SerializeField] float lifespan;
@@ -20,9 +20,9 @@ public class PlayerBasicAttack : MonoBehaviour
 	[Header("Singleton Pattern")]
 	private static PlayerBasicAttack instance;
 	public static PlayerBasicAttack Instance { get { return instance; } }
-	void SetSingletonInstance()
+	void InitializeSingleton()
 	{
-		if (instance != null && instance != this) Destroy(gameObject);
+		if (instance && instance != this) Destroy(gameObject);
 		else instance = this;
 	}
 
@@ -42,7 +42,7 @@ public class PlayerBasicAttack : MonoBehaviour
 
 	void Awake()
 	{
-		SetSingletonInstance();
+		InitializeSingleton();
 		projectile = Instantiate(projectilePrefab);
 		projectile.SetActive(false);
 		playerMovementScript = GetComponent<PlayerMovement>();

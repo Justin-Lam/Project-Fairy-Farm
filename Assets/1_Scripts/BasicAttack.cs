@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BasicAttack : MonoBehaviour
@@ -21,6 +22,16 @@ public class BasicAttack : MonoBehaviour
 	IEnumerator countdownToDeath(float lifespan)
 	{
 		yield return new WaitForSeconds(lifespan);
+		gameObject.SetActive(false);
+	}
+
+	void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.gameObject.CompareTag("Player")) return;
+
+		if (collision.gameObject.CompareTag("Enemy"))
+			collision.gameObject.transform.GetComponentInParent<SnowQueen>().TakeDamage(PlayerBasicAttack.Instance.damage);
+
 		gameObject.SetActive(false);
 	}
 }
