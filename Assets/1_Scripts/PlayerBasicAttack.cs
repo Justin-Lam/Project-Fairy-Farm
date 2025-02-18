@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerBasicAttack : MonoBehaviour
 {
+	[SerializeField] float damage;
 	[SerializeField] public float chargeDuration;
 	[SerializeField] float velocity;
 	[SerializeField] float lifespan;

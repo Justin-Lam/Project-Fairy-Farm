@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class SnowQueen : MonoBehaviour
 {
-	[SerializeField] int maxHealth;
-	int health;
+	[SerializeField] float maxHealth;
+	float health;
 
 	StateMachine stateMachine;
 
