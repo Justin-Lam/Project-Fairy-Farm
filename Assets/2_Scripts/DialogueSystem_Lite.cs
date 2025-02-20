@@ -1,9 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DialogueSystem_Lite : MonoBehaviour
 {
 	Canvas canvas;
+	PlayerInput playerInput;
 
 	public static event Action OnActivate;
 	public static event Action OnDeactivate;
@@ -17,21 +19,34 @@ public class DialogueSystem_Lite : MonoBehaviour
 		else instance = this;
 	}
 
+	// "On" functions are called by the Player Input component
+	void OnAdvance()
+	{
+		Deactivate();
+	}
+
 	void Awake()
 	{
 		InitSingleton();
+
 		canvas = GetComponent<Canvas>();
+		playerInput = GetComponent<PlayerInput>();
+
+		canvas.enabled = false;
+		playerInput.enabled = false;
 	}
 
 	public void Activate()
 	{
 		OnActivate?.Invoke();
 		canvas.enabled = true;
+		playerInput.enabled = true;
 	}
 
 	void Deactivate()
 	{
 		OnDeactivate?.Invoke();
 		canvas.enabled = false;
+		playerInput.enabled = false;
 	}
 }
