@@ -22,11 +22,6 @@ public class Player_Movement_AccelerationBased : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
 	}
 
-	private void Update()
-	{
-		Debug.Log(rb.velocity.magnitude);
-	}
-
 	void FixedUpdate()
 	{
 		if (moveDir != Vector2.zero) Accelerate();
