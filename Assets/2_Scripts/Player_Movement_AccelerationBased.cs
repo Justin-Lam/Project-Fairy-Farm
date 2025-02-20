@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player_Movement : MonoBehaviour
+public class Player_Movement_AccelerationBased : MonoBehaviour
 {
 	[SerializeField] float maxVelocity;
 	[SerializeField] float acceleration;
@@ -20,6 +20,11 @@ public class Player_Movement : MonoBehaviour
 	void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
+	}
+
+	private void Update()
+	{
+		Debug.Log(rb.velocity.magnitude);
 	}
 
 	void FixedUpdate()
