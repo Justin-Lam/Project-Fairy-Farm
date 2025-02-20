@@ -24,7 +24,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     ""name"": ""Controls"",
     ""maps"": [
         {
-            ""name"": ""Combat"",
+            ""name"": ""Gameplay"",
             ""id"": ""7ff99b73-fde6-421f-bfb3-96f9ce780fb5"",
             ""actions"": [
                 {
@@ -35,24 +35,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Charge Basic"",
-                    ""type"": ""Button"",
-                    ""id"": ""d100a2ab-0c8c-41fd-8d05-940d8fe398dc"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Fire Basic"",
-                    ""type"": ""Button"",
-                    ""id"": ""fc1c3249-4d25-4352-be21-811c3d1136fe"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -110,44 +92,20 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b2bdf83f-ee21-4297-8894-bafceed63cb6"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Charge Basic"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8670b35d-3d00-496d-8256-bfff34a51ecd"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire Basic"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // Combat
-        m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
-        m_Combat_Move = m_Combat.FindAction("Move", throwIfNotFound: true);
-        m_Combat_ChargeBasic = m_Combat.FindAction("Charge Basic", throwIfNotFound: true);
-        m_Combat_FireBasic = m_Combat.FindAction("Fire Basic", throwIfNotFound: true);
+        // Gameplay
+        m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
+        m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
     }
 
     ~@Controls()
     {
-        UnityEngine.Debug.Assert(!m_Combat.enabled, "This will cause a leak and performance issues, Controls.Combat.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Gameplay.enabled, "This will cause a leak and performance issues, Controls.Gameplay.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -206,71 +164,53 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Combat
-    private readonly InputActionMap m_Combat;
-    private List<ICombatActions> m_CombatActionsCallbackInterfaces = new List<ICombatActions>();
-    private readonly InputAction m_Combat_Move;
-    private readonly InputAction m_Combat_ChargeBasic;
-    private readonly InputAction m_Combat_FireBasic;
-    public struct CombatActions
+    // Gameplay
+    private readonly InputActionMap m_Gameplay;
+    private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
+    private readonly InputAction m_Gameplay_Move;
+    public struct GameplayActions
     {
         private @Controls m_Wrapper;
-        public CombatActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Combat_Move;
-        public InputAction @ChargeBasic => m_Wrapper.m_Combat_ChargeBasic;
-        public InputAction @FireBasic => m_Wrapper.m_Combat_FireBasic;
-        public InputActionMap Get() { return m_Wrapper.m_Combat; }
+        public GameplayActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Gameplay_Move;
+        public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CombatActions set) { return set.Get(); }
-        public void AddCallbacks(ICombatActions instance)
+        public static implicit operator InputActionMap(GameplayActions set) { return set.Get(); }
+        public void AddCallbacks(IGameplayActions instance)
         {
-            if (instance == null || m_Wrapper.m_CombatActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_CombatActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_GameplayActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GameplayActionsCallbackInterfaces.Add(instance);
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @ChargeBasic.started += instance.OnChargeBasic;
-            @ChargeBasic.performed += instance.OnChargeBasic;
-            @ChargeBasic.canceled += instance.OnChargeBasic;
-            @FireBasic.started += instance.OnFireBasic;
-            @FireBasic.performed += instance.OnFireBasic;
-            @FireBasic.canceled += instance.OnFireBasic;
         }
 
-        private void UnregisterCallbacks(ICombatActions instance)
+        private void UnregisterCallbacks(IGameplayActions instance)
         {
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @ChargeBasic.started -= instance.OnChargeBasic;
-            @ChargeBasic.performed -= instance.OnChargeBasic;
-            @ChargeBasic.canceled -= instance.OnChargeBasic;
-            @FireBasic.started -= instance.OnFireBasic;
-            @FireBasic.performed -= instance.OnFireBasic;
-            @FireBasic.canceled -= instance.OnFireBasic;
         }
 
-        public void RemoveCallbacks(ICombatActions instance)
+        public void RemoveCallbacks(IGameplayActions instance)
         {
-            if (m_Wrapper.m_CombatActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_GameplayActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(ICombatActions instance)
+        public void SetCallbacks(IGameplayActions instance)
         {
-            foreach (var item in m_Wrapper.m_CombatActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_GameplayActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_CombatActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_GameplayActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public CombatActions @Combat => new CombatActions(this);
-    public interface ICombatActions
+    public GameplayActions @Gameplay => new GameplayActions(this);
+    public interface IGameplayActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnChargeBasic(InputAction.CallbackContext context);
-        void OnFireBasic(InputAction.CallbackContext context);
     }
 }

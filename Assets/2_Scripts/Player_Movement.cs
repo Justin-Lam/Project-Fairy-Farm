@@ -10,7 +10,6 @@ public class Player_Movement : MonoBehaviour
 	[SerializeField] float deceleration;
 	Rigidbody2D rb;
 	Vector2 moveDir;
-	bool canMove = true;
 
 	// "On" functions are called by the Player Input component
 	void OnMove(InputValue iv)
@@ -23,28 +22,17 @@ public class Player_Movement : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
 	}
 
-	void OnEnable()
-	{
-		Player_BasicAttack.OnCharge += () => canMove = false;
-		Player_BasicAttack.OnFire += () => canMove = true;
-	}
-	void OnDisable()
-	{
-		Player_BasicAttack.OnCharge -= () => canMove = false;
-		Player_BasicAttack.OnFire -= () => canMove = true;
-	}
-
 	void FixedUpdate()
 	{
-		if (moveDir != Vector2.zero && canMove) Accelerate();
+		if (moveDir != Vector2.zero) Accelerate();
 		else Decelerate();
 	}
 
 	void Accelerate()
 	{
-		// Code based from https://www.reddit.com/r/Unity2D/comments/16w3v3s/comment/k2un48s/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+		// Code based off of https://www.reddit.com/r/Unity2D/comments/16w3v3s/comment/k2un48s/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
-		// Get the direction we need to go to get to where we want to go (deltaVelocity)
+		// Get the direction we need to go in order to get to where we want to go (deltaVelocity)
 		Vector2 currentVelocity = rb.velocity;
 		Vector2 targetVelocity = moveDir * maxVelocity;
 		Vector2 deltaVelocity = targetVelocity - currentVelocity;
