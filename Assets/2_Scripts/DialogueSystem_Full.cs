@@ -3,20 +3,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-public class DialogueSystem_Lite : MonoBehaviour
+public class DialogueSystem_Full : MonoBehaviour
 {
 	Canvas canvas_DS;
 	PlayerInput playerInput;
-	[SerializeField] Canvas canvas_Player1;
-	[SerializeField] Canvas canvas_Player2;
-	[SerializeField] Image image;
 
 	public static event Action OnActivate;
 	public static event Action OnDeactivate;
 
 	[Header("Singleton Pattern")]
-	private static DialogueSystem_Lite instance;
-	public static DialogueSystem_Lite Instance => instance;
+	private static DialogueSystem_Full instance;
+	public static DialogueSystem_Full Instance => instance;
 	void InitSingleton()
 	{
 		if (instance && instance != this) Destroy(gameObject);
@@ -38,8 +35,6 @@ public class DialogueSystem_Lite : MonoBehaviour
 
 		canvas_DS.enabled = false;
 		playerInput.enabled = false;
-		canvas_Player2.enabled = false;
-		image.enabled = false;
 	}
 
 	public void Activate()
@@ -54,7 +49,5 @@ public class DialogueSystem_Lite : MonoBehaviour
 		OnDeactivate?.Invoke();
 		canvas_DS.enabled = false;
 		playerInput.enabled = false;
-		canvas_Player2.enabled = false;
-		image.enabled = false;
 	}
 }
