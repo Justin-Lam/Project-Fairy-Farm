@@ -1,11 +1,15 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class DialogueSystem_Lite : MonoBehaviour
 {
-	Canvas canvas;
+	Canvas canvas_DS;
 	PlayerInput playerInput;
+	[SerializeField] Canvas canvas_Player1;
+	[SerializeField] Canvas canvas_Player2;
+	[SerializeField] Image image;
 
 	public static event Action OnActivate;
 	public static event Action OnDeactivate;
@@ -29,24 +33,28 @@ public class DialogueSystem_Lite : MonoBehaviour
 	{
 		InitSingleton();
 
-		canvas = GetComponent<Canvas>();
+		canvas_DS = GetComponent<Canvas>();
 		playerInput = GetComponent<PlayerInput>();
 
-		canvas.enabled = false;
+		canvas_DS.enabled = false;
 		playerInput.enabled = false;
+		canvas_Player2.enabled = false;
+		image.enabled = false;
 	}
 
 	public void Activate()
 	{
 		OnActivate?.Invoke();
-		canvas.enabled = true;
+		canvas_DS.enabled = true;
 		playerInput.enabled = true;
 	}
 
 	void Deactivate()
 	{
 		OnDeactivate?.Invoke();
-		canvas.enabled = false;
+		canvas_DS.enabled = false;
 		playerInput.enabled = false;
+		canvas_Player2.enabled = false;
+		image.enabled = false;
 	}
 }
