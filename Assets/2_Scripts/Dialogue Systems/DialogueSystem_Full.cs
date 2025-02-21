@@ -7,6 +7,13 @@ public class DialogueSystem_Full : MonoBehaviour
 {
 	Canvas canvas_DS;
 	PlayerInput playerInput;
+	[SerializeField] Image image;
+	[SerializeField] Image portrait_3L;
+	[SerializeField] Image portrait_2L;
+	[SerializeField] Image portrait_M;
+	[SerializeField] Image portrait_2R;
+	[SerializeField] Image portrait_3R;
+
 
 	public static event Action OnActivate;
 	public static event Action OnDeactivate;
@@ -35,6 +42,11 @@ public class DialogueSystem_Full : MonoBehaviour
 
 		canvas_DS.enabled = false;
 		playerInput.enabled = false;
+		image.enabled = false;
+		portrait_3L.enabled = false;
+		portrait_2L.enabled = false;
+		portrait_2R.enabled = false;
+		portrait_3R.enabled = false;
 	}
 
 	public void Activate()
@@ -49,5 +61,10 @@ public class DialogueSystem_Full : MonoBehaviour
 		OnDeactivate?.Invoke();
 		canvas_DS.enabled = false;
 		playerInput.enabled = false;
+		image.enabled = false;
+		portrait_3L.enabled = false;
+		portrait_2L.enabled = false;
+		portrait_2R.enabled = false;
+		portrait_3R.enabled = false;
 	}
 }

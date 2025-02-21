@@ -23,6 +23,7 @@ public class Temp_ActivateDSButton : MonoBehaviour
 
 	public void Activate()
 	{
-		DialogueSystem_Lite.Instance.Activate();
+		if (DialogueSystem_Full.Instance) DialogueSystem_Full.Instance.Activate();
+		else if (DialogueSystem_Lite.Instance) DialogueSystem_Lite.Instance.Activate();
 	}
 }
