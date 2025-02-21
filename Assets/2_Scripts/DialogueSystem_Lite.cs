@@ -20,7 +20,7 @@ public class DialogueSystem_Lite : MonoBehaviour
 	}
 
 	// "On" functions are called by the Player Input component
-	void OnAdvance()
+	void OnContinue()
 	{
 		Deactivate();
 	}

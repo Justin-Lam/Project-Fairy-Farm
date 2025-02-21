@@ -78,7 +78,7 @@
             "id": "7a79e6c2-2dd7-4e8a-a02e-718d1bb22d76",
             "actions": [
                 {
-                    "name": "Advance",
+                    "name": "Continue",
                     "type": "Button",
                     "id": "252cfd22-2752-4f6e-a262-386d58467b2c",
                     "expectedControlType": "",
@@ -95,7 +95,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Advance",
+                    "action": "Continue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -106,7 +106,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Advance",
+                    "action": "Continue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

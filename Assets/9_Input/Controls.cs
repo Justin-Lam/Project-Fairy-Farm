@@ -100,7 +100,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             ""id"": ""7a79e6c2-2dd7-4e8a-a02e-718d1bb22d76"",
             ""actions"": [
                 {
-                    ""name"": ""Advance"",
+                    ""name"": ""Continue"",
                     ""type"": ""Button"",
                     ""id"": ""252cfd22-2752-4f6e-a262-386d58467b2c"",
                     ""expectedControlType"": """",
@@ -117,7 +117,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Advance"",
+                    ""action"": ""Continue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -128,7 +128,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Advance"",
+                    ""action"": ""Continue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -142,7 +142,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         // Dialogue
         m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
-        m_Dialogue_Advance = m_Dialogue.FindAction("Advance", throwIfNotFound: true);
+        m_Dialogue_Continue = m_Dialogue.FindAction("Continue", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -256,12 +256,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     // Dialogue
     private readonly InputActionMap m_Dialogue;
     private List<IDialogueActions> m_DialogueActionsCallbackInterfaces = new List<IDialogueActions>();
-    private readonly InputAction m_Dialogue_Advance;
+    private readonly InputAction m_Dialogue_Continue;
     public struct DialogueActions
     {
         private @Controls m_Wrapper;
         public DialogueActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Advance => m_Wrapper.m_Dialogue_Advance;
+        public InputAction @Continue => m_Wrapper.m_Dialogue_Continue;
         public InputActionMap Get() { return m_Wrapper.m_Dialogue; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -271,16 +271,16 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_DialogueActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_DialogueActionsCallbackInterfaces.Add(instance);
-            @Advance.started += instance.OnAdvance;
-            @Advance.performed += instance.OnAdvance;
-            @Advance.canceled += instance.OnAdvance;
+            @Continue.started += instance.OnContinue;
+            @Continue.performed += instance.OnContinue;
+            @Continue.canceled += instance.OnContinue;
         }
 
         private void UnregisterCallbacks(IDialogueActions instance)
         {
-            @Advance.started -= instance.OnAdvance;
-            @Advance.performed -= instance.OnAdvance;
-            @Advance.canceled -= instance.OnAdvance;
+            @Continue.started -= instance.OnContinue;
+            @Continue.performed -= instance.OnContinue;
+            @Continue.canceled -= instance.OnContinue;
         }
 
         public void RemoveCallbacks(IDialogueActions instance)
@@ -304,6 +304,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     }
     public interface IDialogueActions
     {
-        void OnAdvance(InputAction.CallbackContext context);
+        void OnContinue(InputAction.CallbackContext context);
     }
 }
