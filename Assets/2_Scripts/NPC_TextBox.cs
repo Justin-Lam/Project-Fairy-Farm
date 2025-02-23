@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class NPC_TextBox : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class NPC_TextBox : MonoBehaviour
 	Canvas canvas;
 	TMP_Text text;
 	RectTransform text_RectTransform;
+
+	Coroutine hideCountdownCoroutine;
 
 	void Awake()
 	{
@@ -19,7 +22,7 @@ public class NPC_TextBox : MonoBehaviour
 		canvas.enabled = false;
 	}
 
-	public void Display(string text)
+	public void Display(string text, float duration)
 	{
 		this.text.text = text;
 		LayoutRebuilder.ForceRebuildLayoutImmediate(text_RectTransform);	// update rect transform immediately instead of on next frame
@@ -27,5 +30,14 @@ public class NPC_TextBox : MonoBehaviour
 		rectTransform.sizeDelta = ((RectTransform)this.text.transform).sizeDelta;
 
 		canvas.enabled = true;
+
+		if (hideCountdownCoroutine != null) StopCoroutine(hideCountdownCoroutine);
+		hideCountdownCoroutine = StartCoroutine(HideCountdown(duration));
+	}
+
+	IEnumerator HideCountdown(float duration)
+	{
+		yield return new WaitForSeconds(duration);
+		canvas.enabled = false;
 	}
 }

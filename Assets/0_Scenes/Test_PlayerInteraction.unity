@@ -358,6 +358,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c03a0bcc433eb4bbbf2521424b731c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speakRate: 15
+  minSpeakDuration: 1
 --- !u!1 &731025007
 GameObject:
   m_ObjectHideFlags: 0
