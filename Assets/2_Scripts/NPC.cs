@@ -2,8 +2,15 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour, IInteractable
 {
+	NPC_TextBox textBox;
+
+	void Awake()
+	{
+		textBox = GetComponentInChildren<NPC_TextBox>();
+	}
+
 	public void Interact()
 	{
-		Debug.Log("hi!");
+		textBox.Display("Hi!");
 	}
 }
