@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 1321322526657147200}
   - component: {fileID: 3165893697131347687}
   - component: {fileID: 7907395433120761350}
+  - component: {fileID: 8815354688757236577}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -256,3 +257,18 @@ MonoBehaviour:
   layersToCheck:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &8815354688757236577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323655051593238696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcca02096e894f2478782ab3df26b1c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  cooldown: 0.15
+  comboDurations: []

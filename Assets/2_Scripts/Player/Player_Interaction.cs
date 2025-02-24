@@ -5,7 +5,6 @@ public class Player_Interaction : MonoBehaviour
 	[SerializeField] float radius;
 	[SerializeField] LayerMask layersToCheck;
 
-	// "On" functions are called by the Player Input component
 	void OnInteract()
 	{
 		/*
