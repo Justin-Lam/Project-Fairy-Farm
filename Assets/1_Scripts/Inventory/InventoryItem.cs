@@ -5,7 +5,14 @@ using UnityEngine.EventSystems;
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 	Image image;
+	[HideInInspector] public Item item;
 	[HideInInspector] public Transform parentAfterDrag;	// to ensure item is drawn over slots
+
+	public void Init(Item item)
+	{
+		this.item = item;
+		image.sprite = item.sprite;
+	}
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
