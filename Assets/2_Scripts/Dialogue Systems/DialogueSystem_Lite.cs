@@ -11,8 +11,8 @@ public class DialogueSystem_Lite : MonoBehaviour
 	[SerializeField] Canvas canvas_Player2;
 	[SerializeField] Image image;
 
-	public static event Action OnActivate;
-	public static event Action OnDeactivate;
+	public static event Action OnActivated;
+	public static event Action OnDeactivated;
 
 	[Header("Singleton Pattern")]
 	private static DialogueSystem_Lite instance;
@@ -44,14 +44,14 @@ public class DialogueSystem_Lite : MonoBehaviour
 
 	public void Activate()
 	{
-		OnActivate?.Invoke();
+		OnActivated?.Invoke();
 		canvas_DS.enabled = true;
 		playerInput.enabled = true;
 	}
 
 	void Deactivate()
 	{
-		OnDeactivate?.Invoke();
+		OnDeactivated?.Invoke();
 		canvas_DS.enabled = false;
 		playerInput.enabled = false;
 		canvas_Player2.enabled = false;

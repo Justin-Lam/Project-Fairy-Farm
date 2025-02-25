@@ -16,17 +16,17 @@ public class Temp_ActivateDSButton : MonoBehaviour
 	}
 	void OnEnable()
 	{
-		DialogueSystem_Lite.OnActivate += SetUninteractable;
-		DialogueSystem_Lite.OnDeactivate += SetInteractable;
-		DialogueSystem_Full.OnActivate += SetUninteractable;
-		DialogueSystem_Full.OnDeactivate += SetInteractable;
+		DialogueSystem_Lite.OnActivated += SetUninteractable;
+		DialogueSystem_Lite.OnDeactivated += SetInteractable;
+		DialogueSystem_Full.OnActivated += SetUninteractable;
+		DialogueSystem_Full.OnDeactivated += SetInteractable;
 	}
 	void OnDisable()
 	{
-		DialogueSystem_Lite.OnActivate -= SetUninteractable;
-		DialogueSystem_Lite.OnDeactivate -= SetInteractable;
-		DialogueSystem_Full.OnActivate += SetUninteractable;
-		DialogueSystem_Full.OnDeactivate += SetInteractable;
+		DialogueSystem_Lite.OnActivated -= SetUninteractable;
+		DialogueSystem_Lite.OnDeactivated -= SetInteractable;
+		DialogueSystem_Full.OnActivated += SetUninteractable;
+		DialogueSystem_Full.OnDeactivated += SetInteractable;
 	}
 	void SetInteractable()
 	{

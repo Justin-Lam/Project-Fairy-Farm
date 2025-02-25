@@ -62,6 +62,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""0c802860-a016-4508-b0a9-59c3ec925288"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""6008e772-54c2-407a-87a7-ab3f7c695265"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +170,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Toggle Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd568c43-9160-489d-b599-49549a19977a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""022dc73b-3ea7-4f24-bbb4-e76d0d52cb67"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -203,6 +243,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_Gameplay_ToggleInventory = m_Gameplay.FindAction("Toggle Inventory", throwIfNotFound: true);
+        m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
+        m_Gameplay_Exit = m_Gameplay.FindAction("Exit", throwIfNotFound: true);
         // Dialogue
         m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
         m_Dialogue_Continue = m_Dialogue.FindAction("Continue", throwIfNotFound: true);
@@ -277,6 +319,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Attack;
     private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_ToggleInventory;
+    private readonly InputAction m_Gameplay_Pause;
+    private readonly InputAction m_Gameplay_Exit;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -285,6 +329,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @ToggleInventory => m_Wrapper.m_Gameplay_ToggleInventory;
+        public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
+        public InputAction @Exit => m_Wrapper.m_Gameplay_Exit;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -306,6 +352,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @ToggleInventory.started += instance.OnToggleInventory;
             @ToggleInventory.performed += instance.OnToggleInventory;
             @ToggleInventory.canceled += instance.OnToggleInventory;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+            @Exit.started += instance.OnExit;
+            @Exit.performed += instance.OnExit;
+            @Exit.canceled += instance.OnExit;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -322,6 +374,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @ToggleInventory.started -= instance.OnToggleInventory;
             @ToggleInventory.performed -= instance.OnToggleInventory;
             @ToggleInventory.canceled -= instance.OnToggleInventory;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
+            @Exit.started -= instance.OnExit;
+            @Exit.performed -= instance.OnExit;
+            @Exit.canceled -= instance.OnExit;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -391,6 +449,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnToggleInventory(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
+        void OnExit(InputAction.CallbackContext context);
     }
     public interface IDialogueActions
     {

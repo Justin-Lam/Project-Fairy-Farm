@@ -15,8 +15,8 @@ public class DialogueSystem_Full : MonoBehaviour
 	[SerializeField] Image portrait_3R;
 
 
-	public static event Action OnActivate;
-	public static event Action OnDeactivate;
+	public static event Action OnActivated;
+	public static event Action OnDeactivated;
 
 	[Header("Singleton Pattern")]
 	private static DialogueSystem_Full instance;
@@ -51,14 +51,14 @@ public class DialogueSystem_Full : MonoBehaviour
 
 	public void Activate()
 	{
-		OnActivate?.Invoke();
+		OnActivated?.Invoke();
 		canvas_DS.enabled = true;
 		playerInput.enabled = true;
 	}
 
 	void Deactivate()
 	{
-		OnDeactivate?.Invoke();
+		OnDeactivated?.Invoke();
 		canvas_DS.enabled = false;
 		playerInput.enabled = false;
 		image.enabled = false;
