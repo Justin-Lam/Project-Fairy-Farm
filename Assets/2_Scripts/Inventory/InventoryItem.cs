@@ -1,15 +1,17 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-	[Header("UI")]
-	public Image image
+	Image image;
+	[HideInInspector] public Transform parentAfterDrag;	// to ensure item is drawn over slots
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
-		image
+		image.raycastTarget = false;
+		parentAfterDrag = transform.parent;
+		transform.SetParent(transform.root);
 	}
 
 	public void OnDrag(PointerEventData eventData)
@@ -19,6 +21,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
-		throw new System.NotImplementedException();
+		image.raycastTarget = true;
+		transform.SetParent(parentAfterDrag);
+	}
+
+	void Awake()
+	{
+		image = GetComponent<Image>();
 	}
 }
