@@ -10,6 +10,7 @@ public class Player_Movement_AccelerationBased : MonoBehaviour
 	[SerializeField] float deceleration;
 	Rigidbody2D rb;
 	Vector2 moveDir;
+	bool canMove = true;
 
 	// "On" functions are called by the Player Input component
 	void OnMove(InputValue iv)
@@ -17,17 +18,11 @@ public class Player_Movement_AccelerationBased : MonoBehaviour
 		moveDir = iv.Get<Vector2>();
 	}
 
-	void Awake()
-	{
-		rb = GetComponent<Rigidbody2D>();
-	}
-
 	void FixedUpdate()
 	{
-		if (moveDir != Vector2.zero) Accelerate();
+		if (moveDir != Vector2.zero && canMove) Accelerate();
 		else Decelerate();
 	}
-
 	void Accelerate()
 	{
 		// Code based off of https://www.reddit.com/r/Unity2D/comments/16w3v3s/comment/k2un48s/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
@@ -45,7 +40,6 @@ public class Player_Movement_AccelerationBased : MonoBehaviour
 		rb.velocity += accelerationVector;
 		rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
 	}
-
 	void Decelerate()
 	{
 		// Code based from https://www.reddit.com/r/Unity2D/comments/16w3v3s/comment/k2un48s/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
@@ -54,5 +48,28 @@ public class Player_Movement_AccelerationBased : MonoBehaviour
 		
 		rb.velocity += decelerationVector;
 		if (Vector2.Dot(rb.velocity, decelerationVector) > 0f) rb.velocity = Vector2.zero;	// if now going backwards (the vectors point in the same direction)
+	}
+
+	void Awake()
+	{
+		rb = GetComponent<Rigidbody2D>();
+	}
+	void OnEnable()
+	{
+		Player_Sword.OnAttackStart += DisableMovement;
+		Player_Sword.OnAttackEnd += EnableMovement;
+	}
+	void OnDisable()
+	{
+		Player_Sword.OnAttackStart -= DisableMovement;
+		Player_Sword.OnAttackEnd -= EnableMovement;
+	}
+	void EnableMovement()
+	{
+		canMove = true;
+	}
+	void DisableMovement()
+	{
+		canMove = false;
 	}
 }

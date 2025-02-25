@@ -273,9 +273,12 @@ MonoBehaviour:
   - <damage>k__BackingField: 5
     <duration>k__BackingField: 0.2
     <buffer>k__BackingField: 0
+    <moveForce>k__BackingField: 4.5
   - <damage>k__BackingField: 5
     <duration>k__BackingField: 0.5
     <buffer>k__BackingField: 0.5
+    <moveForce>k__BackingField: 0
   - <damage>k__BackingField: 10
     <duration>k__BackingField: 0.5
     <buffer>k__BackingField: 0.5
+    <moveForce>k__BackingField: 9
