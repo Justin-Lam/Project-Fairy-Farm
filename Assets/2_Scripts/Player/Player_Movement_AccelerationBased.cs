@@ -12,7 +12,6 @@ public class Player_Movement_AccelerationBased : MonoBehaviour
 	Vector2 moveDir;
 	bool canMove = true;
 
-	// "On" functions are called by the Player Input component
 	void OnMove(InputValue iv)
 	{
 		moveDir = iv.Get<Vector2>();
