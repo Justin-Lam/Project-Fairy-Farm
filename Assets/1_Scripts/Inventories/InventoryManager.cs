@@ -43,6 +43,20 @@ public class InventoryManager : MonoBehaviour
 
 	public void AddItemToPlayerInventory(Item item)
 	{
+		// First try to add to a stack
+		foreach (GameObject slot in playerInventorySlots)
+		{
+			if (slot.transform.childCount == 0) continue;
+
+			InventoryItem ii = slot.GetComponentInChildren<InventoryItem>();
+			if (ii.item == item && ii.amount < item.maxStackSize)
+			{
+				ii.IncrementAmount();
+				return;
+			}
+		}
+
+		// Second try to create a new stack
 		foreach (GameObject slot in playerInventorySlots)
 		{
 			if (slot.transform.childCount == 0)
@@ -50,7 +64,6 @@ public class InventoryManager : MonoBehaviour
 				GameObject itemGO = Instantiate(inventoryItemPrefab, slot.transform);
 				InventoryItem ii = itemGO.GetComponent<InventoryItem>();
 				ii.Init(item);
-
 				return;
 			}
 		}

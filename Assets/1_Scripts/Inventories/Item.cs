@@ -12,5 +12,5 @@ public class Item : ScriptableObject
 
 	public Sprite sprite;
 	public Type type;
-	public bool stackable;
+	public int maxStackSize = 1;
 }

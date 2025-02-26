@@ -1,17 +1,34 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 	Image image;
+	TMP_Text amountText;
+
 	[HideInInspector] public Item item;
-	[HideInInspector] public Transform parentAfterDrag;	// to ensure item is drawn over slots
+	[HideInInspector] public int amount { get; private set; } = 1;
+	[HideInInspector] public Transform parentAfterDrag; // to ensure item is drawn over slots
 
 	public void Init(Item item)
 	{
 		this.item = item;
 		image.sprite = item.sprite;
+		RefreshAmountText();
+	}
+
+	void RefreshAmountText()
+	{
+		if (amount > 1) amountText.text = amount.ToString();
+		else amountText.text = "";  // don't show amount if there's only one
+	}
+
+	public void IncrementAmount()
+	{
+		amount++;
+		RefreshAmountText();
 	}
 
 	public void OnBeginDrag(PointerEventData eventData)
@@ -35,5 +52,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 	void Awake()
 	{
 		image = GetComponent<Image>();
+		amountText = GetComponentInChildren<TMP_Text>();
 	}
 }

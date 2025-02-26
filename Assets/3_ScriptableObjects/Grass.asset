@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 9fcd2f2c993e39b4a8b1e3ca560d4b9f, type: 3}
   type: 1
-  stackable: 1
+  maxStackSize: 99
