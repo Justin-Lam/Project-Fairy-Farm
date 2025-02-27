@@ -24,7 +24,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     ""name"": ""Controls"",
     ""maps"": [
         {
-            ""name"": ""Gameplay_Player"",
+            ""name"": ""Player"",
             ""id"": ""7ff99b73-fde6-421f-bfb3-96f9ce780fb5"",
             ""actions"": [
                 {
@@ -136,7 +136,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Gameplay_UI_Hotbar"",
+            ""name"": ""Hotbar"",
             ""id"": ""31562982-cf87-4266-943d-ba1f13ee1e76"",
             ""actions"": [
                 {
@@ -386,13 +386,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Gameplay_UI_PlayerInventory"",
-            ""id"": ""0cbe198b-13c0-4b66-9f3c-8350f9af8578"",
+            ""name"": ""Player Inventory"",
+            ""id"": ""c23e0c0d-2217-465a-8631-b336e40c2234"",
             ""actions"": [
                 {
                     ""name"": ""Toggle"",
                     ""type"": ""Button"",
-                    ""id"": ""ef6701ea-a112-45bc-b450-0e43e73308f7"",
+                    ""id"": ""dfacfc54-a3c7-49d9-8692-8cd236f75ca9"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -401,7 +401,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Exit"",
                     ""type"": ""Button"",
-                    ""id"": ""7ee742be-a4c9-43af-ac99-2157b2a3c432"",
+                    ""id"": ""6b85d3c1-27b6-4d2a-8ee4-d27d3b165dfe"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -411,7 +411,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""fc173150-d0bf-405a-add3-49b969750567"",
+                    ""id"": ""bd27b280-3daf-4917-a58f-1207f4b9328c"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -422,7 +422,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b8a96941-d11a-435a-a4b2-3b354f392480"",
+                    ""id"": ""2bcc18e1-536c-4f5d-854d-396aaee6c4ce"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -475,28 +475,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Gameplay_Player
-        m_Gameplay_Player = asset.FindActionMap("Gameplay_Player", throwIfNotFound: true);
-        m_Gameplay_Player_Move = m_Gameplay_Player.FindAction("Move", throwIfNotFound: true);
-        m_Gameplay_Player_Attack = m_Gameplay_Player.FindAction("Attack", throwIfNotFound: true);
-        m_Gameplay_Player_Interact = m_Gameplay_Player.FindAction("Interact", throwIfNotFound: true);
-        // Gameplay_UI_Hotbar
-        m_Gameplay_UI_Hotbar = asset.FindActionMap("Gameplay_UI_Hotbar", throwIfNotFound: true);
-        m_Gameplay_UI_Hotbar_ScrollSlots = m_Gameplay_UI_Hotbar.FindAction("Scroll Slots", throwIfNotFound: true);
-        m_Gameplay_UI_Hotbar_SelectSlot1 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 1", throwIfNotFound: true);
-        m_Gameplay_UI_Hotbar_SelectSlot2 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 2", throwIfNotFound: true);
-        m_Gameplay_UI_Hotbar_SelectSlot3 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 3", throwIfNotFound: true);
-        m_Gameplay_UI_Hotbar_SelectSlot4 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 4", throwIfNotFound: true);
-        m_Gameplay_UI_Hotbar_SelectSlot5 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 5", throwIfNotFound: true);
-        m_Gameplay_UI_Hotbar_SelectSlot6 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 6", throwIfNotFound: true);
-        m_Gameplay_UI_Hotbar_SelectSlot7 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 7", throwIfNotFound: true);
-        m_Gameplay_UI_Hotbar_SelectSlot8 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 8", throwIfNotFound: true);
-        m_Gameplay_UI_Hotbar_SelectSlot9 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 9", throwIfNotFound: true);
-        m_Gameplay_UI_Hotbar_SelectSlot10 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 10", throwIfNotFound: true);
-        // Gameplay_UI_PlayerInventory
-        m_Gameplay_UI_PlayerInventory = asset.FindActionMap("Gameplay_UI_PlayerInventory", throwIfNotFound: true);
-        m_Gameplay_UI_PlayerInventory_Toggle = m_Gameplay_UI_PlayerInventory.FindAction("Toggle", throwIfNotFound: true);
-        m_Gameplay_UI_PlayerInventory_Exit = m_Gameplay_UI_PlayerInventory.FindAction("Exit", throwIfNotFound: true);
+        // Player
+        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        // Hotbar
+        m_Hotbar = asset.FindActionMap("Hotbar", throwIfNotFound: true);
+        m_Hotbar_ScrollSlots = m_Hotbar.FindAction("Scroll Slots", throwIfNotFound: true);
+        m_Hotbar_SelectSlot1 = m_Hotbar.FindAction("Select Slot 1", throwIfNotFound: true);
+        m_Hotbar_SelectSlot2 = m_Hotbar.FindAction("Select Slot 2", throwIfNotFound: true);
+        m_Hotbar_SelectSlot3 = m_Hotbar.FindAction("Select Slot 3", throwIfNotFound: true);
+        m_Hotbar_SelectSlot4 = m_Hotbar.FindAction("Select Slot 4", throwIfNotFound: true);
+        m_Hotbar_SelectSlot5 = m_Hotbar.FindAction("Select Slot 5", throwIfNotFound: true);
+        m_Hotbar_SelectSlot6 = m_Hotbar.FindAction("Select Slot 6", throwIfNotFound: true);
+        m_Hotbar_SelectSlot7 = m_Hotbar.FindAction("Select Slot 7", throwIfNotFound: true);
+        m_Hotbar_SelectSlot8 = m_Hotbar.FindAction("Select Slot 8", throwIfNotFound: true);
+        m_Hotbar_SelectSlot9 = m_Hotbar.FindAction("Select Slot 9", throwIfNotFound: true);
+        m_Hotbar_SelectSlot10 = m_Hotbar.FindAction("Select Slot 10", throwIfNotFound: true);
+        // Player Inventory
+        m_PlayerInventory = asset.FindActionMap("Player Inventory", throwIfNotFound: true);
+        m_PlayerInventory_Toggle = m_PlayerInventory.FindAction("Toggle", throwIfNotFound: true);
+        m_PlayerInventory_Exit = m_PlayerInventory.FindAction("Exit", throwIfNotFound: true);
         // Dialogue
         m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
         m_Dialogue_Continue = m_Dialogue.FindAction("Continue", throwIfNotFound: true);
@@ -504,9 +504,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
 
     ~@Controls()
     {
-        UnityEngine.Debug.Assert(!m_Gameplay_Player.enabled, "This will cause a leak and performance issues, Controls.Gameplay_Player.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_Gameplay_UI_Hotbar.enabled, "This will cause a leak and performance issues, Controls.Gameplay_UI_Hotbar.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_Gameplay_UI_PlayerInventory.enabled, "This will cause a leak and performance issues, Controls.Gameplay_UI_PlayerInventory.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, Controls.Player.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Hotbar.enabled, "This will cause a leak and performance issues, Controls.Hotbar.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PlayerInventory.enabled, "This will cause a leak and performance issues, Controls.PlayerInventory.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Dialogue.enabled, "This will cause a leak and performance issues, Controls.Dialogue.Disable() has not been called.");
     }
 
@@ -566,28 +566,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Gameplay_Player
-    private readonly InputActionMap m_Gameplay_Player;
-    private List<IGameplay_PlayerActions> m_Gameplay_PlayerActionsCallbackInterfaces = new List<IGameplay_PlayerActions>();
-    private readonly InputAction m_Gameplay_Player_Move;
-    private readonly InputAction m_Gameplay_Player_Attack;
-    private readonly InputAction m_Gameplay_Player_Interact;
-    public struct Gameplay_PlayerActions
+    // Player
+    private readonly InputActionMap m_Player;
+    private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
+    private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_Attack;
+    private readonly InputAction m_Player_Interact;
+    public struct PlayerActions
     {
         private @Controls m_Wrapper;
-        public Gameplay_PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Gameplay_Player_Move;
-        public InputAction @Attack => m_Wrapper.m_Gameplay_Player_Attack;
-        public InputAction @Interact => m_Wrapper.m_Gameplay_Player_Interact;
-        public InputActionMap Get() { return m_Wrapper.m_Gameplay_Player; }
+        public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @Attack => m_Wrapper.m_Player_Attack;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(Gameplay_PlayerActions set) { return set.Get(); }
-        public void AddCallbacks(IGameplay_PlayerActions instance)
+        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerActions instance)
         {
-            if (instance == null || m_Wrapper.m_Gameplay_PlayerActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_Gameplay_PlayerActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
@@ -599,7 +599,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Interact.canceled += instance.OnInteract;
         }
 
-        private void UnregisterCallbacks(IGameplay_PlayerActions instance)
+        private void UnregisterCallbacks(IPlayerActions instance)
         {
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
@@ -612,60 +612,60 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Interact.canceled -= instance.OnInteract;
         }
 
-        public void RemoveCallbacks(IGameplay_PlayerActions instance)
+        public void RemoveCallbacks(IPlayerActions instance)
         {
-            if (m_Wrapper.m_Gameplay_PlayerActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IGameplay_PlayerActions instance)
+        public void SetCallbacks(IPlayerActions instance)
         {
-            foreach (var item in m_Wrapper.m_Gameplay_PlayerActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_Gameplay_PlayerActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public Gameplay_PlayerActions @Gameplay_Player => new Gameplay_PlayerActions(this);
+    public PlayerActions @Player => new PlayerActions(this);
 
-    // Gameplay_UI_Hotbar
-    private readonly InputActionMap m_Gameplay_UI_Hotbar;
-    private List<IGameplay_UI_HotbarActions> m_Gameplay_UI_HotbarActionsCallbackInterfaces = new List<IGameplay_UI_HotbarActions>();
-    private readonly InputAction m_Gameplay_UI_Hotbar_ScrollSlots;
-    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot1;
-    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot2;
-    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot3;
-    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot4;
-    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot5;
-    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot6;
-    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot7;
-    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot8;
-    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot9;
-    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot10;
-    public struct Gameplay_UI_HotbarActions
+    // Hotbar
+    private readonly InputActionMap m_Hotbar;
+    private List<IHotbarActions> m_HotbarActionsCallbackInterfaces = new List<IHotbarActions>();
+    private readonly InputAction m_Hotbar_ScrollSlots;
+    private readonly InputAction m_Hotbar_SelectSlot1;
+    private readonly InputAction m_Hotbar_SelectSlot2;
+    private readonly InputAction m_Hotbar_SelectSlot3;
+    private readonly InputAction m_Hotbar_SelectSlot4;
+    private readonly InputAction m_Hotbar_SelectSlot5;
+    private readonly InputAction m_Hotbar_SelectSlot6;
+    private readonly InputAction m_Hotbar_SelectSlot7;
+    private readonly InputAction m_Hotbar_SelectSlot8;
+    private readonly InputAction m_Hotbar_SelectSlot9;
+    private readonly InputAction m_Hotbar_SelectSlot10;
+    public struct HotbarActions
     {
         private @Controls m_Wrapper;
-        public Gameplay_UI_HotbarActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @ScrollSlots => m_Wrapper.m_Gameplay_UI_Hotbar_ScrollSlots;
-        public InputAction @SelectSlot1 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot1;
-        public InputAction @SelectSlot2 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot2;
-        public InputAction @SelectSlot3 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot3;
-        public InputAction @SelectSlot4 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot4;
-        public InputAction @SelectSlot5 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot5;
-        public InputAction @SelectSlot6 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot6;
-        public InputAction @SelectSlot7 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot7;
-        public InputAction @SelectSlot8 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot8;
-        public InputAction @SelectSlot9 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot9;
-        public InputAction @SelectSlot10 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot10;
-        public InputActionMap Get() { return m_Wrapper.m_Gameplay_UI_Hotbar; }
+        public HotbarActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ScrollSlots => m_Wrapper.m_Hotbar_ScrollSlots;
+        public InputAction @SelectSlot1 => m_Wrapper.m_Hotbar_SelectSlot1;
+        public InputAction @SelectSlot2 => m_Wrapper.m_Hotbar_SelectSlot2;
+        public InputAction @SelectSlot3 => m_Wrapper.m_Hotbar_SelectSlot3;
+        public InputAction @SelectSlot4 => m_Wrapper.m_Hotbar_SelectSlot4;
+        public InputAction @SelectSlot5 => m_Wrapper.m_Hotbar_SelectSlot5;
+        public InputAction @SelectSlot6 => m_Wrapper.m_Hotbar_SelectSlot6;
+        public InputAction @SelectSlot7 => m_Wrapper.m_Hotbar_SelectSlot7;
+        public InputAction @SelectSlot8 => m_Wrapper.m_Hotbar_SelectSlot8;
+        public InputAction @SelectSlot9 => m_Wrapper.m_Hotbar_SelectSlot9;
+        public InputAction @SelectSlot10 => m_Wrapper.m_Hotbar_SelectSlot10;
+        public InputActionMap Get() { return m_Wrapper.m_Hotbar; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(Gameplay_UI_HotbarActions set) { return set.Get(); }
-        public void AddCallbacks(IGameplay_UI_HotbarActions instance)
+        public static implicit operator InputActionMap(HotbarActions set) { return set.Get(); }
+        public void AddCallbacks(IHotbarActions instance)
         {
-            if (instance == null || m_Wrapper.m_Gameplay_UI_HotbarActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_Gameplay_UI_HotbarActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_HotbarActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_HotbarActionsCallbackInterfaces.Add(instance);
             @ScrollSlots.started += instance.OnScrollSlots;
             @ScrollSlots.performed += instance.OnScrollSlots;
             @ScrollSlots.canceled += instance.OnScrollSlots;
@@ -701,7 +701,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SelectSlot10.canceled += instance.OnSelectSlot10;
         }
 
-        private void UnregisterCallbacks(IGameplay_UI_HotbarActions instance)
+        private void UnregisterCallbacks(IHotbarActions instance)
         {
             @ScrollSlots.started -= instance.OnScrollSlots;
             @ScrollSlots.performed -= instance.OnScrollSlots;
@@ -738,42 +738,42 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SelectSlot10.canceled -= instance.OnSelectSlot10;
         }
 
-        public void RemoveCallbacks(IGameplay_UI_HotbarActions instance)
+        public void RemoveCallbacks(IHotbarActions instance)
         {
-            if (m_Wrapper.m_Gameplay_UI_HotbarActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_HotbarActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IGameplay_UI_HotbarActions instance)
+        public void SetCallbacks(IHotbarActions instance)
         {
-            foreach (var item in m_Wrapper.m_Gameplay_UI_HotbarActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_HotbarActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_Gameplay_UI_HotbarActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_HotbarActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public Gameplay_UI_HotbarActions @Gameplay_UI_Hotbar => new Gameplay_UI_HotbarActions(this);
+    public HotbarActions @Hotbar => new HotbarActions(this);
 
-    // Gameplay_UI_PlayerInventory
-    private readonly InputActionMap m_Gameplay_UI_PlayerInventory;
-    private List<IGameplay_UI_PlayerInventoryActions> m_Gameplay_UI_PlayerInventoryActionsCallbackInterfaces = new List<IGameplay_UI_PlayerInventoryActions>();
-    private readonly InputAction m_Gameplay_UI_PlayerInventory_Toggle;
-    private readonly InputAction m_Gameplay_UI_PlayerInventory_Exit;
-    public struct Gameplay_UI_PlayerInventoryActions
+    // Player Inventory
+    private readonly InputActionMap m_PlayerInventory;
+    private List<IPlayerInventoryActions> m_PlayerInventoryActionsCallbackInterfaces = new List<IPlayerInventoryActions>();
+    private readonly InputAction m_PlayerInventory_Toggle;
+    private readonly InputAction m_PlayerInventory_Exit;
+    public struct PlayerInventoryActions
     {
         private @Controls m_Wrapper;
-        public Gameplay_UI_PlayerInventoryActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Toggle => m_Wrapper.m_Gameplay_UI_PlayerInventory_Toggle;
-        public InputAction @Exit => m_Wrapper.m_Gameplay_UI_PlayerInventory_Exit;
-        public InputActionMap Get() { return m_Wrapper.m_Gameplay_UI_PlayerInventory; }
+        public PlayerInventoryActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Toggle => m_Wrapper.m_PlayerInventory_Toggle;
+        public InputAction @Exit => m_Wrapper.m_PlayerInventory_Exit;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerInventory; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(Gameplay_UI_PlayerInventoryActions set) { return set.Get(); }
-        public void AddCallbacks(IGameplay_UI_PlayerInventoryActions instance)
+        public static implicit operator InputActionMap(PlayerInventoryActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerInventoryActions instance)
         {
-            if (instance == null || m_Wrapper.m_Gameplay_UI_PlayerInventoryActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_Gameplay_UI_PlayerInventoryActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_PlayerInventoryActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerInventoryActionsCallbackInterfaces.Add(instance);
             @Toggle.started += instance.OnToggle;
             @Toggle.performed += instance.OnToggle;
             @Toggle.canceled += instance.OnToggle;
@@ -782,7 +782,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Exit.canceled += instance.OnExit;
         }
 
-        private void UnregisterCallbacks(IGameplay_UI_PlayerInventoryActions instance)
+        private void UnregisterCallbacks(IPlayerInventoryActions instance)
         {
             @Toggle.started -= instance.OnToggle;
             @Toggle.performed -= instance.OnToggle;
@@ -792,21 +792,21 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Exit.canceled -= instance.OnExit;
         }
 
-        public void RemoveCallbacks(IGameplay_UI_PlayerInventoryActions instance)
+        public void RemoveCallbacks(IPlayerInventoryActions instance)
         {
-            if (m_Wrapper.m_Gameplay_UI_PlayerInventoryActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PlayerInventoryActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IGameplay_UI_PlayerInventoryActions instance)
+        public void SetCallbacks(IPlayerInventoryActions instance)
         {
-            foreach (var item in m_Wrapper.m_Gameplay_UI_PlayerInventoryActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PlayerInventoryActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_Gameplay_UI_PlayerInventoryActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PlayerInventoryActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public Gameplay_UI_PlayerInventoryActions @Gameplay_UI_PlayerInventory => new Gameplay_UI_PlayerInventoryActions(this);
+    public PlayerInventoryActions @PlayerInventory => new PlayerInventoryActions(this);
 
     // Dialogue
     private readonly InputActionMap m_Dialogue;
@@ -853,13 +853,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public DialogueActions @Dialogue => new DialogueActions(this);
-    public interface IGameplay_PlayerActions
+    public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
-    public interface IGameplay_UI_HotbarActions
+    public interface IHotbarActions
     {
         void OnScrollSlots(InputAction.CallbackContext context);
         void OnSelectSlot1(InputAction.CallbackContext context);
@@ -873,7 +873,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnSelectSlot9(InputAction.CallbackContext context);
         void OnSelectSlot10(InputAction.CallbackContext context);
     }
-    public interface IGameplay_UI_PlayerInventoryActions
+    public interface IPlayerInventoryActions
     {
         void OnToggle(InputAction.CallbackContext context);
         void OnExit(InputAction.CallbackContext context);

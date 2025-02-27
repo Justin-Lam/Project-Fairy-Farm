@@ -8,13 +8,13 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 	Image image;
 	TMP_Text amountText;
 
-	[HideInInspector] public Item item;
+	[HideInInspector] public ItemSO itemSO;
 	[HideInInspector] public int amount { get; private set; } = 1;
 	[HideInInspector] public Transform parentAfterDrag; // to ensure item is drawn over slots
 
-	public void Init(Item item)
+	public void Init(ItemSO item)
 	{
-		this.item = item;
+		this.itemSO = item;
 		image.sprite = item.sprite;
 		RefreshAmountText();
 	}

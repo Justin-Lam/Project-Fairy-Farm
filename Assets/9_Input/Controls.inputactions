@@ -2,7 +2,7 @@
     "name": "Controls",
     "maps": [
         {
-            "name": "Gameplay_Player",
+            "name": "Player",
             "id": "7ff99b73-fde6-421f-bfb3-96f9ce780fb5",
             "actions": [
                 {
@@ -114,7 +114,7 @@
             ]
         },
         {
-            "name": "Gameplay_UI_Hotbar",
+            "name": "Hotbar",
             "id": "31562982-cf87-4266-943d-ba1f13ee1e76",
             "actions": [
                 {
@@ -364,13 +364,13 @@
             ]
         },
         {
-            "name": "Gameplay_UI_PlayerInventory",
-            "id": "0cbe198b-13c0-4b66-9f3c-8350f9af8578",
+            "name": "Player Inventory",
+            "id": "c23e0c0d-2217-465a-8631-b336e40c2234",
             "actions": [
                 {
                     "name": "Toggle",
                     "type": "Button",
-                    "id": "ef6701ea-a112-45bc-b450-0e43e73308f7",
+                    "id": "dfacfc54-a3c7-49d9-8692-8cd236f75ca9",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -379,7 +379,7 @@
                 {
                     "name": "Exit",
                     "type": "Button",
-                    "id": "7ee742be-a4c9-43af-ac99-2157b2a3c432",
+                    "id": "6b85d3c1-27b6-4d2a-8ee4-d27d3b165dfe",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -389,7 +389,7 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "fc173150-d0bf-405a-add3-49b969750567",
+                    "id": "bd27b280-3daf-4917-a58f-1207f4b9328c",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
@@ -400,7 +400,7 @@
                 },
                 {
                     "name": "",
-                    "id": "b8a96941-d11a-435a-a4b2-3b354f392480",
+                    "id": "2bcc18e1-536c-4f5d-854d-396aaee6c4ce",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
