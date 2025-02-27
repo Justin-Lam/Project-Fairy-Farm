@@ -3,9 +3,14 @@ using UnityEngine.InputSystem;
 
 public class Hotbar : MonoBehaviour
 {
-	[SerializeField] InventorySlot[] slots;
 	[SerializeField] Transform selectedSlotIndicator;
+	[field: SerializeField, HideInInspector] public InventorySlot[] slots { get; private set; }
 	int selectedSlotIndex = 0;
+
+	void Awake()
+	{
+		slots = GetComponentsInChildren<InventorySlot>();
+	}
 
 	void OnScrollSlots(InputValue iv)
 	{

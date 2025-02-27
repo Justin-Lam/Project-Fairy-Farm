@@ -386,11 +386,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Gameplay_UI"",
+            ""name"": ""Gameplay_UI_PlayerInventory"",
             ""id"": ""0cbe198b-13c0-4b66-9f3c-8350f9af8578"",
             ""actions"": [
                 {
-                    ""name"": ""Toggle Inventory"",
+                    ""name"": ""Toggle"",
                     ""type"": ""Button"",
                     ""id"": ""ef6701ea-a112-45bc-b450-0e43e73308f7"",
                     ""expectedControlType"": """",
@@ -406,15 +406,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Pause"",
-                    ""type"": ""Button"",
-                    ""id"": ""c6d2ea09-d63a-4c42-8c32-90b1c4f41f85"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -425,7 +416,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Toggle Inventory"",
+                    ""action"": ""Toggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -437,17 +428,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Exit"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b30b9285-0f4b-40e2-ade9-1bab48d0a451"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -513,11 +493,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Gameplay_UI_Hotbar_SelectSlot8 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 8", throwIfNotFound: true);
         m_Gameplay_UI_Hotbar_SelectSlot9 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 9", throwIfNotFound: true);
         m_Gameplay_UI_Hotbar_SelectSlot10 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 10", throwIfNotFound: true);
-        // Gameplay_UI
-        m_Gameplay_UI = asset.FindActionMap("Gameplay_UI", throwIfNotFound: true);
-        m_Gameplay_UI_ToggleInventory = m_Gameplay_UI.FindAction("Toggle Inventory", throwIfNotFound: true);
-        m_Gameplay_UI_Exit = m_Gameplay_UI.FindAction("Exit", throwIfNotFound: true);
-        m_Gameplay_UI_Pause = m_Gameplay_UI.FindAction("Pause", throwIfNotFound: true);
+        // Gameplay_UI_PlayerInventory
+        m_Gameplay_UI_PlayerInventory = asset.FindActionMap("Gameplay_UI_PlayerInventory", throwIfNotFound: true);
+        m_Gameplay_UI_PlayerInventory_Toggle = m_Gameplay_UI_PlayerInventory.FindAction("Toggle", throwIfNotFound: true);
+        m_Gameplay_UI_PlayerInventory_Exit = m_Gameplay_UI_PlayerInventory.FindAction("Exit", throwIfNotFound: true);
         // Dialogue
         m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
         m_Dialogue_Continue = m_Dialogue.FindAction("Continue", throwIfNotFound: true);
@@ -527,7 +506,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         UnityEngine.Debug.Assert(!m_Gameplay_Player.enabled, "This will cause a leak and performance issues, Controls.Gameplay_Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Gameplay_UI_Hotbar.enabled, "This will cause a leak and performance issues, Controls.Gameplay_UI_Hotbar.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_Gameplay_UI.enabled, "This will cause a leak and performance issues, Controls.Gameplay_UI.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Gameplay_UI_PlayerInventory.enabled, "This will cause a leak and performance issues, Controls.Gameplay_UI_PlayerInventory.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Dialogue.enabled, "This will cause a leak and performance issues, Controls.Dialogue.Disable() has not been called.");
     }
 
@@ -775,67 +754,59 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     }
     public Gameplay_UI_HotbarActions @Gameplay_UI_Hotbar => new Gameplay_UI_HotbarActions(this);
 
-    // Gameplay_UI
-    private readonly InputActionMap m_Gameplay_UI;
-    private List<IGameplay_UIActions> m_Gameplay_UIActionsCallbackInterfaces = new List<IGameplay_UIActions>();
-    private readonly InputAction m_Gameplay_UI_ToggleInventory;
-    private readonly InputAction m_Gameplay_UI_Exit;
-    private readonly InputAction m_Gameplay_UI_Pause;
-    public struct Gameplay_UIActions
+    // Gameplay_UI_PlayerInventory
+    private readonly InputActionMap m_Gameplay_UI_PlayerInventory;
+    private List<IGameplay_UI_PlayerInventoryActions> m_Gameplay_UI_PlayerInventoryActionsCallbackInterfaces = new List<IGameplay_UI_PlayerInventoryActions>();
+    private readonly InputAction m_Gameplay_UI_PlayerInventory_Toggle;
+    private readonly InputAction m_Gameplay_UI_PlayerInventory_Exit;
+    public struct Gameplay_UI_PlayerInventoryActions
     {
         private @Controls m_Wrapper;
-        public Gameplay_UIActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @ToggleInventory => m_Wrapper.m_Gameplay_UI_ToggleInventory;
-        public InputAction @Exit => m_Wrapper.m_Gameplay_UI_Exit;
-        public InputAction @Pause => m_Wrapper.m_Gameplay_UI_Pause;
-        public InputActionMap Get() { return m_Wrapper.m_Gameplay_UI; }
+        public Gameplay_UI_PlayerInventoryActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Toggle => m_Wrapper.m_Gameplay_UI_PlayerInventory_Toggle;
+        public InputAction @Exit => m_Wrapper.m_Gameplay_UI_PlayerInventory_Exit;
+        public InputActionMap Get() { return m_Wrapper.m_Gameplay_UI_PlayerInventory; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(Gameplay_UIActions set) { return set.Get(); }
-        public void AddCallbacks(IGameplay_UIActions instance)
+        public static implicit operator InputActionMap(Gameplay_UI_PlayerInventoryActions set) { return set.Get(); }
+        public void AddCallbacks(IGameplay_UI_PlayerInventoryActions instance)
         {
-            if (instance == null || m_Wrapper.m_Gameplay_UIActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_Gameplay_UIActionsCallbackInterfaces.Add(instance);
-            @ToggleInventory.started += instance.OnToggleInventory;
-            @ToggleInventory.performed += instance.OnToggleInventory;
-            @ToggleInventory.canceled += instance.OnToggleInventory;
+            if (instance == null || m_Wrapper.m_Gameplay_UI_PlayerInventoryActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_Gameplay_UI_PlayerInventoryActionsCallbackInterfaces.Add(instance);
+            @Toggle.started += instance.OnToggle;
+            @Toggle.performed += instance.OnToggle;
+            @Toggle.canceled += instance.OnToggle;
             @Exit.started += instance.OnExit;
             @Exit.performed += instance.OnExit;
             @Exit.canceled += instance.OnExit;
-            @Pause.started += instance.OnPause;
-            @Pause.performed += instance.OnPause;
-            @Pause.canceled += instance.OnPause;
         }
 
-        private void UnregisterCallbacks(IGameplay_UIActions instance)
+        private void UnregisterCallbacks(IGameplay_UI_PlayerInventoryActions instance)
         {
-            @ToggleInventory.started -= instance.OnToggleInventory;
-            @ToggleInventory.performed -= instance.OnToggleInventory;
-            @ToggleInventory.canceled -= instance.OnToggleInventory;
+            @Toggle.started -= instance.OnToggle;
+            @Toggle.performed -= instance.OnToggle;
+            @Toggle.canceled -= instance.OnToggle;
             @Exit.started -= instance.OnExit;
             @Exit.performed -= instance.OnExit;
             @Exit.canceled -= instance.OnExit;
-            @Pause.started -= instance.OnPause;
-            @Pause.performed -= instance.OnPause;
-            @Pause.canceled -= instance.OnPause;
         }
 
-        public void RemoveCallbacks(IGameplay_UIActions instance)
+        public void RemoveCallbacks(IGameplay_UI_PlayerInventoryActions instance)
         {
-            if (m_Wrapper.m_Gameplay_UIActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_Gameplay_UI_PlayerInventoryActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IGameplay_UIActions instance)
+        public void SetCallbacks(IGameplay_UI_PlayerInventoryActions instance)
         {
-            foreach (var item in m_Wrapper.m_Gameplay_UIActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_Gameplay_UI_PlayerInventoryActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_Gameplay_UIActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_Gameplay_UI_PlayerInventoryActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public Gameplay_UIActions @Gameplay_UI => new Gameplay_UIActions(this);
+    public Gameplay_UI_PlayerInventoryActions @Gameplay_UI_PlayerInventory => new Gameplay_UI_PlayerInventoryActions(this);
 
     // Dialogue
     private readonly InputActionMap m_Dialogue;
@@ -902,11 +873,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnSelectSlot9(InputAction.CallbackContext context);
         void OnSelectSlot10(InputAction.CallbackContext context);
     }
-    public interface IGameplay_UIActions
+    public interface IGameplay_UI_PlayerInventoryActions
     {
-        void OnToggleInventory(InputAction.CallbackContext context);
+        void OnToggle(InputAction.CallbackContext context);
         void OnExit(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
     }
     public interface IDialogueActions
     {

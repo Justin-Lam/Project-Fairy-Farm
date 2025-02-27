@@ -364,11 +364,11 @@
             ]
         },
         {
-            "name": "Gameplay_UI",
+            "name": "Gameplay_UI_PlayerInventory",
             "id": "0cbe198b-13c0-4b66-9f3c-8350f9af8578",
             "actions": [
                 {
-                    "name": "Toggle Inventory",
+                    "name": "Toggle",
                     "type": "Button",
                     "id": "ef6701ea-a112-45bc-b450-0e43e73308f7",
                     "expectedControlType": "",
@@ -384,15 +384,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Pause",
-                    "type": "Button",
-                    "id": "c6d2ea09-d63a-4c42-8c32-90b1c4f41f85",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -403,7 +394,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Toggle Inventory",
+                    "action": "Toggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -415,17 +406,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Exit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b30b9285-0f4b-40e2-ade9-1bab48d0a451",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
