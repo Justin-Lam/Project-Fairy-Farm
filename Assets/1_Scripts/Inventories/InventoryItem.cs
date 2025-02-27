@@ -8,21 +8,21 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 	Image image;
 	TMP_Text amountText;
 
-	[HideInInspector] public ItemSO itemSO;
+	[HideInInspector] public ItemSO itemSO {  get; private set; }
 	[HideInInspector] public int amount { get; private set; } = 1;
 	[HideInInspector] public Transform parentAfterDrag; // to ensure item is drawn over slots
 
-	public void Init(ItemSO item)
+	public void Set(ItemSO itemSO)
 	{
-		this.itemSO = item;
-		image.sprite = item.sprite;
+		this.itemSO = itemSO;
+		image.sprite = itemSO.sprite;
 		RefreshAmountText();
 	}
 
 	void RefreshAmountText()
 	{
 		if (amount > 1) amountText.text = amount.ToString();
-		else amountText.text = "";  // don't show amount if there's only one
+		else amountText.text = "";  // don't show
 	}
 
 	public void IncrementAmount()
@@ -31,19 +31,17 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 		RefreshAmountText();
 	}
 
-	public void OnBeginDrag(PointerEventData eventData)
+	public void OnBeginDrag(PointerEventData ed)
 	{
-		image.raycastTarget = false;
-		parentAfterDrag = transform.parent;
+		image.raycastTarget = false;		// so the raycast can hit slots instead of this
+		parentAfterDrag = transform.parent;	// in case item isn't dragged to a new slot and needs to be sent back
 		transform.SetParent(transform.root);
 	}
-
-	public void OnDrag(PointerEventData eventData)
+	public void OnDrag(PointerEventData ed)
 	{
 		transform.position = Input.mousePosition;
 	}
-
-	public void OnEndDrag(PointerEventData eventData)
+	public void OnEndDrag(PointerEventData ed)
 	{
 		image.raycastTarget = true;
 		transform.SetParent(parentAfterDrag);

@@ -47,7 +47,7 @@ public class PlayerInventoryUI : MonoBehaviour
 
 			GameObject itemGO = Instantiate(inventoryItemPrefab, slot.transform);
 			InventoryItem item = itemGO.GetComponent<InventoryItem>();
-			item.Init(itemSO);
+			item.Set(itemSO);
 			return true;
 		}
 

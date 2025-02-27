@@ -12,8 +12,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 		return GetComponentInChildren<InventoryItem>();
 	}
 
-	public void OnDrop(PointerEventData eventData)
+	public void OnDrop(PointerEventData ed)
 	{
-		if (transform.childCount == 0) eventData.pointerDrag.GetComponent<InventoryItem>().parentAfterDrag = transform;
+		if (transform.childCount == 0) ed.pointerDrag.GetComponent<InventoryItem>().parentAfterDrag = transform;
 	}
 }
