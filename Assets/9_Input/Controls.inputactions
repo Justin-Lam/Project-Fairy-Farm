@@ -2,7 +2,7 @@
     "name": "Controls",
     "maps": [
         {
-            "name": "Gameplay",
+            "name": "Gameplay_Player",
             "id": "7ff99b73-fde6-421f-bfb3-96f9ce780fb5",
             "actions": [
                 {
@@ -114,13 +114,13 @@
             ]
         },
         {
-            "name": "Gameplay_UI",
-            "id": "0cbe198b-13c0-4b66-9f3c-8350f9af8578",
+            "name": "Gameplay_UI_Hotbar",
+            "id": "31562982-cf87-4266-943d-ba1f13ee1e76",
             "actions": [
                 {
                     "name": "Scroll Slots",
                     "type": "Value",
-                    "id": "0885aa94-845f-4248-880a-cb5b2f05d1fc",
+                    "id": "d9e442ce-f169-405b-9f2e-ee4e7bf95902",
                     "expectedControlType": "Axis",
                     "processors": "Clamp(min=-1,max=1)",
                     "interactions": "",
@@ -129,7 +129,7 @@
                 {
                     "name": "Select Slot 1",
                     "type": "Button",
-                    "id": "03d4be8e-0444-489c-a99a-a302126aebcc",
+                    "id": "ce56183f-cb14-434e-9237-099773ab4014",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -138,7 +138,7 @@
                 {
                     "name": "Select Slot 2",
                     "type": "Button",
-                    "id": "8650b92e-5966-40e9-b410-25ea0468d548",
+                    "id": "6f973535-2ade-4e47-a7b0-5deb486de15e",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -147,7 +147,7 @@
                 {
                     "name": "Select Slot 3",
                     "type": "Button",
-                    "id": "f9dd3a70-c32d-4c27-80a6-0efa6d89ceba",
+                    "id": "5908deb9-dcca-45e4-b386-e901a52d75ef",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -156,7 +156,7 @@
                 {
                     "name": "Select Slot 4",
                     "type": "Button",
-                    "id": "f43e9416-af30-4734-9b4c-efa192568ee4",
+                    "id": "79163c7e-5160-4a39-b8bc-39c2c35690d6",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -165,7 +165,7 @@
                 {
                     "name": "Select Slot 5",
                     "type": "Button",
-                    "id": "c74490b8-25ed-4922-b837-b8363a6027ff",
+                    "id": "c935620d-4874-4b0c-a86e-177e466c796b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -174,7 +174,7 @@
                 {
                     "name": "Select Slot 6",
                     "type": "Button",
-                    "id": "5dfcd1a7-9bed-4a8e-8503-74043f54e40a",
+                    "id": "c51e4133-6b50-4990-b79e-7b812bbec5d8",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -183,7 +183,7 @@
                 {
                     "name": "Select Slot 7",
                     "type": "Button",
-                    "id": "26b55bff-6bde-45f9-bcb4-87c003adf89e",
+                    "id": "cadba6a7-8840-43ed-b3ab-36c68f181aff",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -192,7 +192,7 @@
                 {
                     "name": "Select Slot 8",
                     "type": "Button",
-                    "id": "dd174508-e782-4ff8-97be-3ff2255503fa",
+                    "id": "e7758244-5fde-412f-b9db-56e72b27a80d",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -201,7 +201,7 @@
                 {
                     "name": "Select Slot 9",
                     "type": "Button",
-                    "id": "c15caef1-3046-44a9-b728-ad203eb6eb9b",
+                    "id": "4c85e561-eaaa-4f6a-aed6-d806dd3696e7",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -210,12 +210,163 @@
                 {
                     "name": "Select Slot 10",
                     "type": "Button",
-                    "id": "ce868a31-d938-487d-9cff-742a4a571936",
+                    "id": "92397b33-30ed-4c31-b35a-700c38d3c4e6",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "5dce5bf7-f488-4ef4-8e0a-aa209281cd18",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll Slots",
+                    "isComposite": true,
+                    "isPartOfComposite": false
                 },
+                {
+                    "name": "positive",
+                    "id": "5b957813-bfb6-421c-a9f2-906c6363133c",
+                    "path": "<Mouse>/scroll/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll Slots",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "negative",
+                    "id": "269736a3-ad96-4e49-a7a7-08fc89475cf2",
+                    "path": "<Mouse>/scroll/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll Slots",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "332b7b3b-1dae-417c-b795-7befa089849e",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Slot 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eae7686c-5130-4cc1-a262-d257ccf19ba0",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Slot 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "824b4eec-87f8-4c3e-83ac-c67271587c7c",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Slot 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bc91dc1e-9b8a-42b5-9568-a1697bddc04b",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Slot 4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d5494e2-1a2e-4e32-a152-0031afab98d5",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Slot 5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c85a4263-85b8-4681-8c8c-00669ff278d6",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Slot 6",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6c9d3aaf-f6bd-4a1d-b01d-264b0f07f2d0",
+                    "path": "<Keyboard>/7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Slot 7",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8b166e51-66d3-4477-bcd0-b286346c43e6",
+                    "path": "<Keyboard>/8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Slot 8",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "34a39484-f5a3-460b-b00a-dd063aed7e88",
+                    "path": "<Keyboard>/9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Slot 9",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a3a3c78-afc3-4b50-abe1-21b0ba5be167",
+                    "path": "<Keyboard>/0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Slot 10",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Gameplay_UI",
+            "id": "0cbe198b-13c0-4b66-9f3c-8350f9af8578",
+            "actions": [
                 {
                     "name": "Toggle Inventory",
                     "type": "Button",
@@ -245,149 +396,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "1D Axis",
-                    "id": "cfeac459-a402-44fc-9399-4f82652fd192",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Scroll Slots",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "positive",
-                    "id": "10c3c8bf-0efe-4b3e-8dfb-7e63d287078b",
-                    "path": "<Mouse>/scroll/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Scroll Slots",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "negative",
-                    "id": "990bf2cd-4ffc-4563-a2c0-2aac67af4ad3",
-                    "path": "<Mouse>/scroll/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Scroll Slots",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "03a9acfa-888b-4231-a72f-de9ea7c455dd",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select Slot 1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d8c1db5e-ffaa-41e2-92d3-a1b692cca112",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select Slot 2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0e9ea2de-7437-4196-ae97-444af756b1bb",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select Slot 3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "073e4a0c-5079-4661-ab0a-53f3124aa7c9",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select Slot 4",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3b6f59b2-4d69-49d5-8670-550f2fa34500",
-                    "path": "<Keyboard>/5",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select Slot 5",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "003aa60d-7570-4ff0-afbf-e086af8f4366",
-                    "path": "<Keyboard>/6",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select Slot 6",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2f40361b-aad5-4961-9a86-80064e358577",
-                    "path": "<Keyboard>/7",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select Slot 7",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0d0de17d-18f8-443e-a6bb-fcb7367cc938",
-                    "path": "<Keyboard>/8",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select Slot 8",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b4df343d-22c2-4b6f-ae0f-8883d654d0cd",
-                    "path": "<Keyboard>/9",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select Slot 9",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c1b32435-1c6c-4045-b0fb-2c20cd83c9ea",
-                    "path": "<Keyboard>/0",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select Slot 10",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "fc173150-d0bf-405a-add3-49b969750567",

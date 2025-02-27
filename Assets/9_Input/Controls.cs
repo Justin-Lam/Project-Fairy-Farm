@@ -24,7 +24,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     ""name"": ""Controls"",
     ""maps"": [
         {
-            ""name"": ""Gameplay"",
+            ""name"": ""Gameplay_Player"",
             ""id"": ""7ff99b73-fde6-421f-bfb3-96f9ce780fb5"",
             ""actions"": [
                 {
@@ -136,13 +136,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Gameplay_UI"",
-            ""id"": ""0cbe198b-13c0-4b66-9f3c-8350f9af8578"",
+            ""name"": ""Gameplay_UI_Hotbar"",
+            ""id"": ""31562982-cf87-4266-943d-ba1f13ee1e76"",
             ""actions"": [
                 {
                     ""name"": ""Scroll Slots"",
                     ""type"": ""Value"",
-                    ""id"": ""0885aa94-845f-4248-880a-cb5b2f05d1fc"",
+                    ""id"": ""d9e442ce-f169-405b-9f2e-ee4e7bf95902"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": ""Clamp(min=-1,max=1)"",
                     ""interactions"": """",
@@ -151,7 +151,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Select Slot 1"",
                     ""type"": ""Button"",
-                    ""id"": ""03d4be8e-0444-489c-a99a-a302126aebcc"",
+                    ""id"": ""ce56183f-cb14-434e-9237-099773ab4014"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -160,7 +160,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Select Slot 2"",
                     ""type"": ""Button"",
-                    ""id"": ""8650b92e-5966-40e9-b410-25ea0468d548"",
+                    ""id"": ""6f973535-2ade-4e47-a7b0-5deb486de15e"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -169,7 +169,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Select Slot 3"",
                     ""type"": ""Button"",
-                    ""id"": ""f9dd3a70-c32d-4c27-80a6-0efa6d89ceba"",
+                    ""id"": ""5908deb9-dcca-45e4-b386-e901a52d75ef"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -178,7 +178,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Select Slot 4"",
                     ""type"": ""Button"",
-                    ""id"": ""f43e9416-af30-4734-9b4c-efa192568ee4"",
+                    ""id"": ""79163c7e-5160-4a39-b8bc-39c2c35690d6"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -187,7 +187,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Select Slot 5"",
                     ""type"": ""Button"",
-                    ""id"": ""c74490b8-25ed-4922-b837-b8363a6027ff"",
+                    ""id"": ""c935620d-4874-4b0c-a86e-177e466c796b"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -196,7 +196,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Select Slot 6"",
                     ""type"": ""Button"",
-                    ""id"": ""5dfcd1a7-9bed-4a8e-8503-74043f54e40a"",
+                    ""id"": ""c51e4133-6b50-4990-b79e-7b812bbec5d8"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -205,7 +205,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Select Slot 7"",
                     ""type"": ""Button"",
-                    ""id"": ""26b55bff-6bde-45f9-bcb4-87c003adf89e"",
+                    ""id"": ""cadba6a7-8840-43ed-b3ab-36c68f181aff"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -214,7 +214,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Select Slot 8"",
                     ""type"": ""Button"",
-                    ""id"": ""dd174508-e782-4ff8-97be-3ff2255503fa"",
+                    ""id"": ""e7758244-5fde-412f-b9db-56e72b27a80d"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -223,7 +223,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Select Slot 9"",
                     ""type"": ""Button"",
-                    ""id"": ""c15caef1-3046-44a9-b728-ad203eb6eb9b"",
+                    ""id"": ""4c85e561-eaaa-4f6a-aed6-d806dd3696e7"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -232,12 +232,163 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Select Slot 10"",
                     ""type"": ""Button"",
-                    ""id"": ""ce868a31-d938-487d-9cff-742a4a571936"",
+                    ""id"": ""92397b33-30ed-4c31-b35a-700c38d3c4e6"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""5dce5bf7-f488-4ef4-8e0a-aa209281cd18"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll Slots"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
                 },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""5b957813-bfb6-421c-a9f2-906c6363133c"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll Slots"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""269736a3-ad96-4e49-a7a7-08fc89475cf2"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll Slots"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""332b7b3b-1dae-417c-b795-7befa089849e"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Slot 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eae7686c-5130-4cc1-a262-d257ccf19ba0"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Slot 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""824b4eec-87f8-4c3e-83ac-c67271587c7c"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Slot 3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bc91dc1e-9b8a-42b5-9568-a1697bddc04b"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Slot 4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d5494e2-1a2e-4e32-a152-0031afab98d5"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Slot 5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c85a4263-85b8-4681-8c8c-00669ff278d6"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Slot 6"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c9d3aaf-f6bd-4a1d-b01d-264b0f07f2d0"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Slot 7"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b166e51-66d3-4477-bcd0-b286346c43e6"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Slot 8"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""34a39484-f5a3-460b-b00a-dd063aed7e88"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Slot 9"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a3a3c78-afc3-4b50-abe1-21b0ba5be167"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Slot 10"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Gameplay_UI"",
+            ""id"": ""0cbe198b-13c0-4b66-9f3c-8350f9af8578"",
+            ""actions"": [
                 {
                     ""name"": ""Toggle Inventory"",
                     ""type"": ""Button"",
@@ -267,149 +418,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""cfeac459-a402-44fc-9399-4f82652fd192"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Scroll Slots"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""10c3c8bf-0efe-4b3e-8dfb-7e63d287078b"",
-                    ""path"": ""<Mouse>/scroll/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Scroll Slots"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""990bf2cd-4ffc-4563-a2c0-2aac67af4ad3"",
-                    ""path"": ""<Mouse>/scroll/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Scroll Slots"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""03a9acfa-888b-4231-a72f-de9ea7c455dd"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Select Slot 1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d8c1db5e-ffaa-41e2-92d3-a1b692cca112"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Select Slot 2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0e9ea2de-7437-4196-ae97-444af756b1bb"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Select Slot 3"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""073e4a0c-5079-4661-ab0a-53f3124aa7c9"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Select Slot 4"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3b6f59b2-4d69-49d5-8670-550f2fa34500"",
-                    ""path"": ""<Keyboard>/5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Select Slot 5"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""003aa60d-7570-4ff0-afbf-e086af8f4366"",
-                    ""path"": ""<Keyboard>/6"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Select Slot 6"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2f40361b-aad5-4961-9a86-80064e358577"",
-                    ""path"": ""<Keyboard>/7"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Select Slot 7"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0d0de17d-18f8-443e-a6bb-fcb7367cc938"",
-                    ""path"": ""<Keyboard>/8"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Select Slot 8"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b4df343d-22c2-4b6f-ae0f-8883d654d0cd"",
-                    ""path"": ""<Keyboard>/9"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Select Slot 9"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c1b32435-1c6c-4045-b0fb-2c20cd83c9ea"",
-                    ""path"": ""<Keyboard>/0"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Select Slot 10"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""fc173150-d0bf-405a-add3-49b969750567"",
@@ -487,24 +495,26 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Gameplay
-        m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
-        m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
-        m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
-        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+        // Gameplay_Player
+        m_Gameplay_Player = asset.FindActionMap("Gameplay_Player", throwIfNotFound: true);
+        m_Gameplay_Player_Move = m_Gameplay_Player.FindAction("Move", throwIfNotFound: true);
+        m_Gameplay_Player_Attack = m_Gameplay_Player.FindAction("Attack", throwIfNotFound: true);
+        m_Gameplay_Player_Interact = m_Gameplay_Player.FindAction("Interact", throwIfNotFound: true);
+        // Gameplay_UI_Hotbar
+        m_Gameplay_UI_Hotbar = asset.FindActionMap("Gameplay_UI_Hotbar", throwIfNotFound: true);
+        m_Gameplay_UI_Hotbar_ScrollSlots = m_Gameplay_UI_Hotbar.FindAction("Scroll Slots", throwIfNotFound: true);
+        m_Gameplay_UI_Hotbar_SelectSlot1 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 1", throwIfNotFound: true);
+        m_Gameplay_UI_Hotbar_SelectSlot2 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 2", throwIfNotFound: true);
+        m_Gameplay_UI_Hotbar_SelectSlot3 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 3", throwIfNotFound: true);
+        m_Gameplay_UI_Hotbar_SelectSlot4 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 4", throwIfNotFound: true);
+        m_Gameplay_UI_Hotbar_SelectSlot5 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 5", throwIfNotFound: true);
+        m_Gameplay_UI_Hotbar_SelectSlot6 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 6", throwIfNotFound: true);
+        m_Gameplay_UI_Hotbar_SelectSlot7 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 7", throwIfNotFound: true);
+        m_Gameplay_UI_Hotbar_SelectSlot8 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 8", throwIfNotFound: true);
+        m_Gameplay_UI_Hotbar_SelectSlot9 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 9", throwIfNotFound: true);
+        m_Gameplay_UI_Hotbar_SelectSlot10 = m_Gameplay_UI_Hotbar.FindAction("Select Slot 10", throwIfNotFound: true);
         // Gameplay_UI
         m_Gameplay_UI = asset.FindActionMap("Gameplay_UI", throwIfNotFound: true);
-        m_Gameplay_UI_ScrollSlots = m_Gameplay_UI.FindAction("Scroll Slots", throwIfNotFound: true);
-        m_Gameplay_UI_SelectSlot1 = m_Gameplay_UI.FindAction("Select Slot 1", throwIfNotFound: true);
-        m_Gameplay_UI_SelectSlot2 = m_Gameplay_UI.FindAction("Select Slot 2", throwIfNotFound: true);
-        m_Gameplay_UI_SelectSlot3 = m_Gameplay_UI.FindAction("Select Slot 3", throwIfNotFound: true);
-        m_Gameplay_UI_SelectSlot4 = m_Gameplay_UI.FindAction("Select Slot 4", throwIfNotFound: true);
-        m_Gameplay_UI_SelectSlot5 = m_Gameplay_UI.FindAction("Select Slot 5", throwIfNotFound: true);
-        m_Gameplay_UI_SelectSlot6 = m_Gameplay_UI.FindAction("Select Slot 6", throwIfNotFound: true);
-        m_Gameplay_UI_SelectSlot7 = m_Gameplay_UI.FindAction("Select Slot 7", throwIfNotFound: true);
-        m_Gameplay_UI_SelectSlot8 = m_Gameplay_UI.FindAction("Select Slot 8", throwIfNotFound: true);
-        m_Gameplay_UI_SelectSlot9 = m_Gameplay_UI.FindAction("Select Slot 9", throwIfNotFound: true);
-        m_Gameplay_UI_SelectSlot10 = m_Gameplay_UI.FindAction("Select Slot 10", throwIfNotFound: true);
         m_Gameplay_UI_ToggleInventory = m_Gameplay_UI.FindAction("Toggle Inventory", throwIfNotFound: true);
         m_Gameplay_UI_Exit = m_Gameplay_UI.FindAction("Exit", throwIfNotFound: true);
         m_Gameplay_UI_Pause = m_Gameplay_UI.FindAction("Pause", throwIfNotFound: true);
@@ -515,7 +525,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
 
     ~@Controls()
     {
-        UnityEngine.Debug.Assert(!m_Gameplay.enabled, "This will cause a leak and performance issues, Controls.Gameplay.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Gameplay_Player.enabled, "This will cause a leak and performance issues, Controls.Gameplay_Player.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Gameplay_UI_Hotbar.enabled, "This will cause a leak and performance issues, Controls.Gameplay_UI_Hotbar.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Gameplay_UI.enabled, "This will cause a leak and performance issues, Controls.Gameplay_UI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Dialogue.enabled, "This will cause a leak and performance issues, Controls.Dialogue.Disable() has not been called.");
     }
@@ -576,28 +587,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Gameplay
-    private readonly InputActionMap m_Gameplay;
-    private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
-    private readonly InputAction m_Gameplay_Move;
-    private readonly InputAction m_Gameplay_Attack;
-    private readonly InputAction m_Gameplay_Interact;
-    public struct GameplayActions
+    // Gameplay_Player
+    private readonly InputActionMap m_Gameplay_Player;
+    private List<IGameplay_PlayerActions> m_Gameplay_PlayerActionsCallbackInterfaces = new List<IGameplay_PlayerActions>();
+    private readonly InputAction m_Gameplay_Player_Move;
+    private readonly InputAction m_Gameplay_Player_Attack;
+    private readonly InputAction m_Gameplay_Player_Interact;
+    public struct Gameplay_PlayerActions
     {
         private @Controls m_Wrapper;
-        public GameplayActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Gameplay_Move;
-        public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
-        public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
-        public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
+        public Gameplay_PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Gameplay_Player_Move;
+        public InputAction @Attack => m_Wrapper.m_Gameplay_Player_Attack;
+        public InputAction @Interact => m_Wrapper.m_Gameplay_Player_Interact;
+        public InputActionMap Get() { return m_Wrapper.m_Gameplay_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(GameplayActions set) { return set.Get(); }
-        public void AddCallbacks(IGameplayActions instance)
+        public static implicit operator InputActionMap(Gameplay_PlayerActions set) { return set.Get(); }
+        public void AddCallbacks(IGameplay_PlayerActions instance)
         {
-            if (instance == null || m_Wrapper.m_GameplayActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_GameplayActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_Gameplay_PlayerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_Gameplay_PlayerActionsCallbackInterfaces.Add(instance);
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
@@ -609,7 +620,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Interact.canceled += instance.OnInteract;
         }
 
-        private void UnregisterCallbacks(IGameplayActions instance)
+        private void UnregisterCallbacks(IGameplay_PlayerActions instance)
         {
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
@@ -622,66 +633,60 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Interact.canceled -= instance.OnInteract;
         }
 
-        public void RemoveCallbacks(IGameplayActions instance)
+        public void RemoveCallbacks(IGameplay_PlayerActions instance)
         {
-            if (m_Wrapper.m_GameplayActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_Gameplay_PlayerActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IGameplayActions instance)
+        public void SetCallbacks(IGameplay_PlayerActions instance)
         {
-            foreach (var item in m_Wrapper.m_GameplayActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_Gameplay_PlayerActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_GameplayActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_Gameplay_PlayerActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public GameplayActions @Gameplay => new GameplayActions(this);
+    public Gameplay_PlayerActions @Gameplay_Player => new Gameplay_PlayerActions(this);
 
-    // Gameplay_UI
-    private readonly InputActionMap m_Gameplay_UI;
-    private List<IGameplay_UIActions> m_Gameplay_UIActionsCallbackInterfaces = new List<IGameplay_UIActions>();
-    private readonly InputAction m_Gameplay_UI_ScrollSlots;
-    private readonly InputAction m_Gameplay_UI_SelectSlot1;
-    private readonly InputAction m_Gameplay_UI_SelectSlot2;
-    private readonly InputAction m_Gameplay_UI_SelectSlot3;
-    private readonly InputAction m_Gameplay_UI_SelectSlot4;
-    private readonly InputAction m_Gameplay_UI_SelectSlot5;
-    private readonly InputAction m_Gameplay_UI_SelectSlot6;
-    private readonly InputAction m_Gameplay_UI_SelectSlot7;
-    private readonly InputAction m_Gameplay_UI_SelectSlot8;
-    private readonly InputAction m_Gameplay_UI_SelectSlot9;
-    private readonly InputAction m_Gameplay_UI_SelectSlot10;
-    private readonly InputAction m_Gameplay_UI_ToggleInventory;
-    private readonly InputAction m_Gameplay_UI_Exit;
-    private readonly InputAction m_Gameplay_UI_Pause;
-    public struct Gameplay_UIActions
+    // Gameplay_UI_Hotbar
+    private readonly InputActionMap m_Gameplay_UI_Hotbar;
+    private List<IGameplay_UI_HotbarActions> m_Gameplay_UI_HotbarActionsCallbackInterfaces = new List<IGameplay_UI_HotbarActions>();
+    private readonly InputAction m_Gameplay_UI_Hotbar_ScrollSlots;
+    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot1;
+    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot2;
+    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot3;
+    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot4;
+    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot5;
+    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot6;
+    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot7;
+    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot8;
+    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot9;
+    private readonly InputAction m_Gameplay_UI_Hotbar_SelectSlot10;
+    public struct Gameplay_UI_HotbarActions
     {
         private @Controls m_Wrapper;
-        public Gameplay_UIActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @ScrollSlots => m_Wrapper.m_Gameplay_UI_ScrollSlots;
-        public InputAction @SelectSlot1 => m_Wrapper.m_Gameplay_UI_SelectSlot1;
-        public InputAction @SelectSlot2 => m_Wrapper.m_Gameplay_UI_SelectSlot2;
-        public InputAction @SelectSlot3 => m_Wrapper.m_Gameplay_UI_SelectSlot3;
-        public InputAction @SelectSlot4 => m_Wrapper.m_Gameplay_UI_SelectSlot4;
-        public InputAction @SelectSlot5 => m_Wrapper.m_Gameplay_UI_SelectSlot5;
-        public InputAction @SelectSlot6 => m_Wrapper.m_Gameplay_UI_SelectSlot6;
-        public InputAction @SelectSlot7 => m_Wrapper.m_Gameplay_UI_SelectSlot7;
-        public InputAction @SelectSlot8 => m_Wrapper.m_Gameplay_UI_SelectSlot8;
-        public InputAction @SelectSlot9 => m_Wrapper.m_Gameplay_UI_SelectSlot9;
-        public InputAction @SelectSlot10 => m_Wrapper.m_Gameplay_UI_SelectSlot10;
-        public InputAction @ToggleInventory => m_Wrapper.m_Gameplay_UI_ToggleInventory;
-        public InputAction @Exit => m_Wrapper.m_Gameplay_UI_Exit;
-        public InputAction @Pause => m_Wrapper.m_Gameplay_UI_Pause;
-        public InputActionMap Get() { return m_Wrapper.m_Gameplay_UI; }
+        public Gameplay_UI_HotbarActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ScrollSlots => m_Wrapper.m_Gameplay_UI_Hotbar_ScrollSlots;
+        public InputAction @SelectSlot1 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot1;
+        public InputAction @SelectSlot2 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot2;
+        public InputAction @SelectSlot3 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot3;
+        public InputAction @SelectSlot4 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot4;
+        public InputAction @SelectSlot5 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot5;
+        public InputAction @SelectSlot6 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot6;
+        public InputAction @SelectSlot7 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot7;
+        public InputAction @SelectSlot8 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot8;
+        public InputAction @SelectSlot9 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot9;
+        public InputAction @SelectSlot10 => m_Wrapper.m_Gameplay_UI_Hotbar_SelectSlot10;
+        public InputActionMap Get() { return m_Wrapper.m_Gameplay_UI_Hotbar; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(Gameplay_UIActions set) { return set.Get(); }
-        public void AddCallbacks(IGameplay_UIActions instance)
+        public static implicit operator InputActionMap(Gameplay_UI_HotbarActions set) { return set.Get(); }
+        public void AddCallbacks(IGameplay_UI_HotbarActions instance)
         {
-            if (instance == null || m_Wrapper.m_Gameplay_UIActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_Gameplay_UIActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_Gameplay_UI_HotbarActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_Gameplay_UI_HotbarActionsCallbackInterfaces.Add(instance);
             @ScrollSlots.started += instance.OnScrollSlots;
             @ScrollSlots.performed += instance.OnScrollSlots;
             @ScrollSlots.canceled += instance.OnScrollSlots;
@@ -715,18 +720,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SelectSlot10.started += instance.OnSelectSlot10;
             @SelectSlot10.performed += instance.OnSelectSlot10;
             @SelectSlot10.canceled += instance.OnSelectSlot10;
-            @ToggleInventory.started += instance.OnToggleInventory;
-            @ToggleInventory.performed += instance.OnToggleInventory;
-            @ToggleInventory.canceled += instance.OnToggleInventory;
-            @Exit.started += instance.OnExit;
-            @Exit.performed += instance.OnExit;
-            @Exit.canceled += instance.OnExit;
-            @Pause.started += instance.OnPause;
-            @Pause.performed += instance.OnPause;
-            @Pause.canceled += instance.OnPause;
         }
 
-        private void UnregisterCallbacks(IGameplay_UIActions instance)
+        private void UnregisterCallbacks(IGameplay_UI_HotbarActions instance)
         {
             @ScrollSlots.started -= instance.OnScrollSlots;
             @ScrollSlots.performed -= instance.OnScrollSlots;
@@ -761,6 +757,59 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SelectSlot10.started -= instance.OnSelectSlot10;
             @SelectSlot10.performed -= instance.OnSelectSlot10;
             @SelectSlot10.canceled -= instance.OnSelectSlot10;
+        }
+
+        public void RemoveCallbacks(IGameplay_UI_HotbarActions instance)
+        {
+            if (m_Wrapper.m_Gameplay_UI_HotbarActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IGameplay_UI_HotbarActions instance)
+        {
+            foreach (var item in m_Wrapper.m_Gameplay_UI_HotbarActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_Gameplay_UI_HotbarActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public Gameplay_UI_HotbarActions @Gameplay_UI_Hotbar => new Gameplay_UI_HotbarActions(this);
+
+    // Gameplay_UI
+    private readonly InputActionMap m_Gameplay_UI;
+    private List<IGameplay_UIActions> m_Gameplay_UIActionsCallbackInterfaces = new List<IGameplay_UIActions>();
+    private readonly InputAction m_Gameplay_UI_ToggleInventory;
+    private readonly InputAction m_Gameplay_UI_Exit;
+    private readonly InputAction m_Gameplay_UI_Pause;
+    public struct Gameplay_UIActions
+    {
+        private @Controls m_Wrapper;
+        public Gameplay_UIActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ToggleInventory => m_Wrapper.m_Gameplay_UI_ToggleInventory;
+        public InputAction @Exit => m_Wrapper.m_Gameplay_UI_Exit;
+        public InputAction @Pause => m_Wrapper.m_Gameplay_UI_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_Gameplay_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(Gameplay_UIActions set) { return set.Get(); }
+        public void AddCallbacks(IGameplay_UIActions instance)
+        {
+            if (instance == null || m_Wrapper.m_Gameplay_UIActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_Gameplay_UIActionsCallbackInterfaces.Add(instance);
+            @ToggleInventory.started += instance.OnToggleInventory;
+            @ToggleInventory.performed += instance.OnToggleInventory;
+            @ToggleInventory.canceled += instance.OnToggleInventory;
+            @Exit.started += instance.OnExit;
+            @Exit.performed += instance.OnExit;
+            @Exit.canceled += instance.OnExit;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+        }
+
+        private void UnregisterCallbacks(IGameplay_UIActions instance)
+        {
             @ToggleInventory.started -= instance.OnToggleInventory;
             @ToggleInventory.performed -= instance.OnToggleInventory;
             @ToggleInventory.canceled -= instance.OnToggleInventory;
@@ -833,13 +882,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public DialogueActions @Dialogue => new DialogueActions(this);
-    public interface IGameplayActions
+    public interface IGameplay_PlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
-    public interface IGameplay_UIActions
+    public interface IGameplay_UI_HotbarActions
     {
         void OnScrollSlots(InputAction.CallbackContext context);
         void OnSelectSlot1(InputAction.CallbackContext context);
@@ -852,6 +901,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnSelectSlot8(InputAction.CallbackContext context);
         void OnSelectSlot9(InputAction.CallbackContext context);
         void OnSelectSlot10(InputAction.CallbackContext context);
+    }
+    public interface IGameplay_UIActions
+    {
         void OnToggleInventory(InputAction.CallbackContext context);
         void OnExit(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);

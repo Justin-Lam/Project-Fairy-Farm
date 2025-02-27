@@ -47,6 +47,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 	{
 		image.raycastTarget = true;
 		transform.SetParent(parentAfterDrag);
+		transform.position = parentAfterDrag.position;
 	}
 
 	void Awake()
