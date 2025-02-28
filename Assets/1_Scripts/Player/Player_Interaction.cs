@@ -1,12 +1,16 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player_Interaction : MonoBehaviour
 {
 	[SerializeField] float radius;
 	[SerializeField] LayerMask layersToCheck;
+	bool canInteract = true;
 
 	void OnInteract()
 	{
+		if (!canInteract) return;
+
 		/*
 		 *	Asked ChatGPT about different methods to go about handling interaction
 		 *	It recommended to use interfaces and OverlapCircleAll() and gave some example code
@@ -32,5 +36,24 @@ public class Player_Interaction : MonoBehaviour
 		}
 
 		nearestInteractable?.Interact();
+	}
+
+	void OnEnable()
+	{
+		PlayerInventoryUI.OnOpened += DisableInteract;
+		PlayerInventoryUI.OnClosed += EnableInteract;
+	}
+	void OnDisable()
+	{
+		PlayerInventoryUI.OnOpened -= DisableInteract;
+		PlayerInventoryUI.OnClosed -= EnableInteract;
+	}
+	void EnableInteract()
+	{
+		canInteract = true;
+	}
+	void DisableInteract()
+	{
+		canInteract = false;
 	}
 }

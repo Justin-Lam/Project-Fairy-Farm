@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerInventoryUI : MonoBehaviour
@@ -5,6 +6,9 @@ public class PlayerInventoryUI : MonoBehaviour
 	[SerializeField] GameObject inventoryItemPrefab;
 	Canvas canvas;
 	InventorySlot[] slots;
+
+	public static event Action OnOpened;
+	public static event Action OnClosed;
 
 	public static PlayerInventoryUI instance { get; private set; }
 	void InitSingleton()
@@ -16,11 +20,17 @@ public class PlayerInventoryUI : MonoBehaviour
 	void OnToggle()
 	{
 		canvas.enabled = !canvas.enabled;
+		if (canvas.enabled) OnOpened?.Invoke();
+		else OnClosed?.Invoke();
 	}
 
 	void OnExit()
 	{
-		if (canvas.enabled) canvas.enabled = false;
+		if (canvas.enabled)
+		{
+			canvas.enabled = false;
+			OnClosed?.Invoke();
+		}
 	}
 
 	public bool TryStackItem(ItemSO itemSO)

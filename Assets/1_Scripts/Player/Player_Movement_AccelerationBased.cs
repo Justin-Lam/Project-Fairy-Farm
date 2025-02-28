@@ -55,13 +55,13 @@ public class Player_Movement_AccelerationBased : MonoBehaviour
 	}
 	void OnEnable()
 	{
-		Player_Sword.OnAttackStart += DisableMovement;
-		Player_Sword.OnAttackEnd += EnableMovement;
+		PlayerInventoryUI.OnOpened += DisableMovement;
+		PlayerInventoryUI.OnClosed += EnableMovement;
 	}
 	void OnDisable()
 	{
-		Player_Sword.OnAttackStart -= DisableMovement;
-		Player_Sword.OnAttackEnd -= EnableMovement;
+		PlayerInventoryUI.OnOpened -= DisableMovement;
+		PlayerInventoryUI.OnClosed -= EnableMovement;
 	}
 	void EnableMovement()
 	{

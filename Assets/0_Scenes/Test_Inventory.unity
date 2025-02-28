@@ -2146,7 +2146,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3165893697131347687, guid: 12fd9cbe64b33e144982e529f58b5b69, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6323655051593238696, guid: 12fd9cbe64b33e144982e529f58b5b69, type: 3}
       propertyPath: m_Name
@@ -5795,6 +5795,47 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1294202737385430000, guid: 4dae95f19559ced4b8ae537ef2053a8f, type: 3}
   m_PrefabInstance: {fileID: 1919778862}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1967007481
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1031164328996067583, guid: c681f076dc6303e4699b2fac5c5d0593, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031164328996067583, guid: c681f076dc6303e4699b2fac5c5d0593, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031164328996067583, guid: c681f076dc6303e4699b2fac5c5d0593, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031164328996067583, guid: c681f076dc6303e4699b2fac5c5d0593, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031164328996067583, guid: c681f076dc6303e4699b2fac5c5d0593, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031164328996067583, guid: c681f076dc6303e4699b2fac5c5d0593, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160874431270119952, guid: c681f076dc6303e4699b2fac5c5d0593, type: 3}
+      propertyPath: m_Name
+      value: NPC
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c681f076dc6303e4699b2fac5c5d0593, type: 3}
 --- !u!1001 &2030741125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6139,4 +6180,5 @@ SceneRoots:
   - {fileID: 1027402286}
   - {fileID: 660043694}
   - {fileID: 781993144}
+  - {fileID: 1967007481}
   - {fileID: 1107236793}
