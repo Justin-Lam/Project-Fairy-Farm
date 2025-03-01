@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInventoryUI : MonoBehaviour
 {
@@ -23,7 +24,6 @@ public class PlayerInventoryUI : MonoBehaviour
 		if (canvas.enabled) OnOpened?.Invoke();
 		else OnClosed?.Invoke();
 	}
-
 	void OnExit()
 	{
 		if (canvas.enabled)
@@ -31,6 +31,12 @@ public class PlayerInventoryUI : MonoBehaviour
 			canvas.enabled = false;
 			OnClosed?.Invoke();
 		}
+	}
+
+	void Open()
+	{
+		canvas.enabled = true;
+		OnOpened?.Invoke();
 	}
 
 	public bool TryStackItem(ItemSO itemSO)
@@ -72,5 +78,13 @@ public class PlayerInventoryUI : MonoBehaviour
 		slots = GetComponentsInChildren<InventorySlot>();
 
 		canvas.enabled = false;
+	}
+	void OnEnable()
+	{
+		Chest.OnOpened += Open;
+	}
+	void OnDisable()
+	{
+		Chest.OnOpened -= Open;
 	}
 }

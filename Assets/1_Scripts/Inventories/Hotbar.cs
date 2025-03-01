@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class Hotbar : MonoBehaviour
 {
+	[SerializeField] Image background;
 	[SerializeField] Transform selectedSlotIndicator;
 	[SerializeField] GameObject inventoryItemPrefab;
 	InventorySlot[] slots;
@@ -22,12 +24,14 @@ public class Hotbar : MonoBehaviour
 
 		selectedSlotIndicator.transform.position = slots[selectedSlotIndex].transform.position;
 	}
-
 	void SelectSlot(int num)
 	{
 		selectedSlotIndex = num - 1;
 		selectedSlotIndicator.transform.position = slots[selectedSlotIndex].transform.position;
 	}
+
+	void ShowBackground() { background.enabled = true; }
+	void HideBackground() { background.enabled = false; }
 
 	public bool TryStackItem(ItemSO itemSO)
 	{
@@ -64,6 +68,16 @@ public class Hotbar : MonoBehaviour
 	{
 		InitSingleton();
 		slots = GetComponentsInChildren<InventorySlot>();
+	}
+	void OnEnable()
+	{
+		PlayerInventoryUI.OnOpened += HideBackground;
+		PlayerInventoryUI.OnClosed += ShowBackground;
+	}
+	void OnDisable()
+	{
+		PlayerInventoryUI.OnOpened -= HideBackground;
+		PlayerInventoryUI.OnClosed -= ShowBackground;
 	}
 
 	void OnSelectSlot1()
