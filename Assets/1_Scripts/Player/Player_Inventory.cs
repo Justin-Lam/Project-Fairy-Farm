@@ -8,8 +8,20 @@ public class Player_Inventory : MonoBehaviour
 	[SerializeField] int inventorySize;
 	Item[] items;
 	int selectedItemIndex = 0;
+	float useItemCounter = 0;
 
 	public static Player_Inventory Instance { get; private set; } void InitSingleton() { if (Instance && Instance != this) Destroy(gameObject); else Instance = this; }
+
+	void OnUseItem()
+	{
+		Item selectedItem = items[selectedItemIndex];
+
+		if (!selectedItem) return;
+		if (useItemCounter > 0) return;
+
+		selectedItem.Use();
+		useItemCounter = selectedItem.UseCooldown;
+	}
 
 	void OnScrollHotbar(InputValue iv)
 	{
@@ -93,6 +105,10 @@ public class Player_Inventory : MonoBehaviour
 	{
 		InitSingleton();
 		items = new Item[hotbarSize + inventorySize];
+	}
+	void Update()
+	{
+		if (useItemCounter > 0) useItemCounter -= Time.deltaTime;
 	}
 
 	void OnSelectHotbarSlot1() => SelectHotbarSlot(1);
