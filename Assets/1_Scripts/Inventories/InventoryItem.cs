@@ -15,7 +15,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 	public void Set(Item itemSO)
 	{
 		this.item = itemSO;
-		image.sprite = itemSO.sprite;
+		image.sprite = itemSO.Sprite;
 		RefreshAmountText();
 	}
 

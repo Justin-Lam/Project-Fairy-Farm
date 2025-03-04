@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6c132d03115fc49bae919698026806, type: 3}
   m_Name: Diamond
   m_EditorClassIdentifier: 
-  <sprite>k__BackingField: {fileID: 21300000, guid: be86c83ece0c3ec4186945f0709ff85e, type: 3}
-  <type>k__BackingField: 2
-  <maxStackSize>k__BackingField: 8
+  <Name>k__BackingField: Diamond
+  <Type>k__BackingField: 2
+  <MaxStackSize>k__BackingField: 8
+  <UseCooldown>k__BackingField: 0
+  <Sprite>k__BackingField: {fileID: 21300000, guid: be86c83ece0c3ec4186945f0709ff85e, type: 3}

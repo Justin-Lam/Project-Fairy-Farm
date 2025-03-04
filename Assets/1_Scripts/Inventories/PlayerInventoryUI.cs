@@ -46,7 +46,7 @@ public class PlayerInventoryUI : MonoBehaviour
 			if (!slot.HasInventoryItem()) continue;
 
 			InventoryItem item = slot.GetInventoryItem();
-			if (item.item == itemSO && item.amount < itemSO.maxStackSize)
+			if (item.item == itemSO && item.amount < itemSO.MaxStackSize)
 			{
 				item.IncrementAmount();
 				return true;

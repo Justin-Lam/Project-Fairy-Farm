@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6c132d03115fc49bae919698026806, type: 3}
   m_Name: Grass
   m_EditorClassIdentifier: 
-  <sprite>k__BackingField: {fileID: 21300000, guid: 9fcd2f2c993e39b4a8b1e3ca560d4b9f, type: 3}
-  <type>k__BackingField: 1
-  <maxStackSize>k__BackingField: 64
+  <Name>k__BackingField: Grass
+  <Type>k__BackingField: 1
+  <MaxStackSize>k__BackingField: 32
+  <UseCooldown>k__BackingField: 0.1
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 9fcd2f2c993e39b4a8b1e3ca560d4b9f, type: 3}

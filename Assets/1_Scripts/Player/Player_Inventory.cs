@@ -1,41 +1,71 @@
+using System;
 using UnityEngine;
 
 public class Player_Inventory : MonoBehaviour
 {
-	float useItemCounter = 0;
+	Item[] items = new Item[40];
 
-	public static Player_Inventory instance { get; private set; }
+	public static Player_Inventory Instance { get; private set; }
 	void InitSingleton()
 	{
-		if (instance && instance != this) Destroy(gameObject);
-		else instance = this;
+		if (Instance && Instance != this) Destroy(gameObject);
+		else Instance = this;
 	}
 
 	void Awake()
 	{
-		InitSingleton();
-	}
-	void Update()
-	{
-		if (useItemCounter > 0) useItemCounter -= Time.deltaTime;
+		Debug.Log(items);
 	}
 
-	void OnUseItem()
+	public void Add(Item item, int amount)
 	{
-		Item selectedItem = Hotbar.Instance.SelectedItem;
+		Item itemToAdd = item;
+		int remainingAmountToAdd = amount;
 
-		if (!selectedItem) return;
-		if (useItemCounter > 0) return;
+		while (remainingAmountToAdd > 0)
+		{
+			// Try to stack
+			foreach (Item itemInInventory in items)
+			{
+				if (itemInInventory.Name != itemToAdd.Name) continue;
 
-		selectedItem.Use();
-		useItemCounter = selectedItem.useCooldown;
-	}
+				int amountThatCanBeAdded = itemInInventory.MaxStackSize - itemInInventory.StackSize;
+				if (amountThatCanBeAdded <= 0) continue;
 
-	public void AddItem(Item itemSO)
-	{
-		if (Hotbar.Instance.TryStackItem(itemSO)) return;
-		if (PlayerInventoryUI.instance.TryStackItem(itemSO)) return;
-		if (Hotbar.Instance.TryCreateStack(itemSO)) return;
-		else PlayerInventoryUI.instance.TryCreateStack(itemSO);
+				int amountToAdd = Math.Min(amountThatCanBeAdded, remainingAmountToAdd);
+				itemInInventory.AddToStack(amountToAdd);
+				remainingAmountToAdd -= amountToAdd;
+
+				if (remainingAmountToAdd <= 0) break;
+			}
+
+			if (remainingAmountToAdd <= 0) break;
+
+			// Try to create stack
+			for (int i = 0; i < items.Length; i++)
+			{
+				Item itemInInventory = items[i];
+
+				if (itemInInventory) continue;
+
+				items[i] = Instantiate(itemToAdd);
+				remainingAmountToAdd--;
+
+				if (remainingAmountToAdd <= 0) break;
+
+				int amountThatCanBeAdded = itemInInventory.MaxStackSize - itemInInventory.StackSize;
+				if (amountThatCanBeAdded <= 0) continue;
+
+				int amountToAdd = Math.Min(amountThatCanBeAdded, remainingAmountToAdd);
+				itemInInventory.AddToStack(amountToAdd);
+				remainingAmountToAdd -= amountToAdd;
+
+				if (remainingAmountToAdd <= 0) break;
+			}
+
+			// Inventory cannot add remaining item(s)
+			if (remainingAmountToAdd > 0) Debug.Log("NOTIFICATION: Player inventory was unable to add remaining items.");
+			break;
+		}
 	}
 }
