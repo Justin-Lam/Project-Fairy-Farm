@@ -7,8 +7,8 @@ public class Player_Inventory : MonoBehaviour
 	[SerializeField] int hotbarSize;
 	[SerializeField] int inventorySize;
 	Item[] items;
+	int[] hotbarCooldownCounters;
 	int selectedItemIndex = 0;
-	float useItemCounter = 0;
 
 	public static Player_Inventory Instance { get; private set; } void InitSingleton() { if (Instance && Instance != this) Destroy(gameObject); else Instance = this; }
 
