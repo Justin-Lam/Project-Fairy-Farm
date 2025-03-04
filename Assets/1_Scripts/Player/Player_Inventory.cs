@@ -1,25 +1,34 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player_Inventory : MonoBehaviour
 {
-	Item[] items = new Item[10];
+	[SerializeField] int hotbarSize;
+	[SerializeField] int inventorySize;
+	Item[] items;
+	int selectedItemIndex = 0;
 
-	public static Player_Inventory Instance { get; private set; }
-	void InitSingleton()
+	public static Player_Inventory Instance { get; private set; } void InitSingleton() { if (Instance && Instance != this) Destroy(gameObject); else Instance = this; }
+
+	void OnScrollHotbar(InputValue iv)
 	{
-		if (Instance && Instance != this) Destroy(gameObject);
-		else Instance = this;
+		if (iv.Get<float>() > 0) selectedItemIndex = (selectedItemIndex + 1) % hotbarSize;
+		else if (iv.Get<float>() < 0) selectedItemIndex = (selectedItemIndex - 1 + hotbarSize) % hotbarSize;
+
+		if (items[selectedItemIndex]) Debug.Log($"Selected ({selectedItemIndex}): {items[selectedItemIndex].Name}");
+		else Debug.Log($"Selcted ({selectedItemIndex}): Null");
 	}
-
-	void Awake()
+	void SelectHotbarSlot(int num)
 	{
-		InitSingleton();
+		selectedItemIndex = num - 1;
+
+		if (items[selectedItemIndex]) Debug.Log($"Selected ({selectedItemIndex}): {items[selectedItemIndex].Name}");
+		else Debug.Log($"Selcted ({selectedItemIndex}): Null");
 	}
 
 	public void AddOneItem(Item item) { Add(item, 1); }
 	public void AddFiveItems(Item item) { Add(item, 5); }
-
 	public void Add(Item item, int amount)
 	{
 		Item itemToAdd = item;
@@ -79,4 +88,21 @@ public class Player_Inventory : MonoBehaviour
 			else Debug.Log($"{i}: Null");
 		}
 	}
+
+	void Awake()
+	{
+		InitSingleton();
+		items = new Item[hotbarSize + inventorySize];
+	}
+
+	void OnSelectHotbarSlot1() => SelectHotbarSlot(1);
+	void OnSelectHotbarSlot2() => SelectHotbarSlot(2);
+	void OnSelectHotbarSlot3() => SelectHotbarSlot(3);
+	void OnSelectHotbarSlot4() => SelectHotbarSlot(4);
+	void OnSelectHotbarSlot5() => SelectHotbarSlot(5);
+	void OnSelectHotbarSlot6() => SelectHotbarSlot(6);
+	void OnSelectHotbarSlot7() => SelectHotbarSlot(7);
+	void OnSelectHotbarSlot8() => SelectHotbarSlot(8);
+	void OnSelectHotbarSlot9() => SelectHotbarSlot(9);
+	void OnSelectHotbarSlot10() => SelectHotbarSlot(10);
 }

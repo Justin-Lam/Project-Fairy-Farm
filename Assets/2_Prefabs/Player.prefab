@@ -337,3 +337,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5630dc2bc0068c245b93399448f2487f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hotbarSize: 10
+  inventorySize: 0
