@@ -7,7 +7,7 @@ public class Player_Inventory : MonoBehaviour
 	[SerializeField] int hotbarSize;
 	[SerializeField] int inventorySize;
 	Item[] items;
-	int[] hotbarCooldownCounters;
+	float[] hotbarCooldownCounters;
 	int selectedItemIndex = 0;
 
 	public static Player_Inventory Instance { get; private set; } void InitSingleton() { if (Instance && Instance != this) Destroy(gameObject); else Instance = this; }
@@ -17,10 +17,10 @@ public class Player_Inventory : MonoBehaviour
 		Item selectedItem = items[selectedItemIndex];
 
 		if (!selectedItem) return;
-		if (useItemCounter > 0) return;
+		if (hotbarCooldownCounters[selectedItemIndex] > 0) return;
 
 		selectedItem.Use();
-		useItemCounter = selectedItem.UseCooldown;
+		hotbarCooldownCounters[selectedItemIndex] = selectedItem.UseCooldown;
 	}
 
 	void OnScrollHotbar(InputValue iv)
@@ -105,10 +105,11 @@ public class Player_Inventory : MonoBehaviour
 	{
 		InitSingleton();
 		items = new Item[hotbarSize + inventorySize];
+		hotbarCooldownCounters = new float[hotbarSize];
 	}
 	void Update()
 	{
-		if (useItemCounter > 0) useItemCounter -= Time.deltaTime;
+		for (int i = 0; i < hotbarCooldownCounters.Length; i++) if (hotbarCooldownCounters[i] > 0) hotbarCooldownCounters[i] -= Time.deltaTime;
 	}
 
 	void OnSelectHotbarSlot1() => SelectHotbarSlot(1);

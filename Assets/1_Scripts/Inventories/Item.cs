@@ -17,6 +17,7 @@ public class Item : ScriptableObject
 	[field: SerializeField] public Sprite Sprite { get; private set; }
 
 	[HideInInspector] public int StackSize { get; private set; } = 1;
+	[HideInInspector] public float UseCooldownCounter { get; private set; } = 0;
 
 	public void AddToStack(int amount) { StackSize += amount; }
 
