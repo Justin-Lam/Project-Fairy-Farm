@@ -3,11 +3,11 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
-	public bool HasItem()
+	public bool HasInventoryItem()
 	{
 		return transform.childCount > 0;
 	}
-	public InventoryItem GetItem()
+	public InventoryItem GetInventoryItem()
 	{
 		return GetComponentInChildren<InventoryItem>();
 	}

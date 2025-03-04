@@ -10,18 +10,19 @@ public class Hotbar : MonoBehaviour
 	InventorySlot[] slots;
 	int selectedSlotIndex = 0;
 
-	public static Hotbar instance { get; private set; }
+	public Item SelectedItem => slots[selectedSlotIndex].HasInventoryItem() ? slots[selectedSlotIndex].GetInventoryItem().item : null;
+
+	public static Hotbar Instance { get; private set; }
 	void InitSingleton()
 	{
-		if (instance && instance != this) Destroy(gameObject);
-		else instance = this;
+		if (Instance && Instance != this) Destroy(gameObject);
+		else Instance = this;
 	}
 
 	void OnScrollSlots(InputValue iv)
 	{
 		if (iv.Get<float>() > 0) selectedSlotIndex = (selectedSlotIndex + 1) % slots.Length;
 		else if (iv.Get<float>() < 0) selectedSlotIndex = (selectedSlotIndex - 1 + slots.Length) % slots.Length;
-
 		selectedSlotIndicator.transform.position = slots[selectedSlotIndex].transform.position;
 	}
 	void SelectSlot(int num)
@@ -30,17 +31,14 @@ public class Hotbar : MonoBehaviour
 		selectedSlotIndicator.transform.position = slots[selectedSlotIndex].transform.position;
 	}
 
-	void ShowBackground() { background.enabled = true; }
-	void HideBackground() { background.enabled = false; }
-
-	public bool TryStackItem(ItemSO itemSO)
+	public bool TryStackItem(Item itemSO)
 	{
 		foreach (InventorySlot slot in slots)
 		{
-			if (!slot.HasItem()) continue;
+			if (!slot.HasInventoryItem()) continue;
 
-			InventoryItem item = slot.GetItem();
-			if (item.itemSO == itemSO && item.amount < itemSO.maxStackSize)
+			InventoryItem item = slot.GetInventoryItem();
+			if (item.item == itemSO && item.amount < itemSO.maxStackSize)
 			{
 				item.IncrementAmount();
 				return true;
@@ -49,11 +47,11 @@ public class Hotbar : MonoBehaviour
 
 		return false;
 	}
-	public bool TryCreateStack(ItemSO itemSO)
+	public bool TryCreateStack(Item itemSO)
 	{
 		foreach (InventorySlot slot in slots)
 		{
-			if (slot.HasItem()) continue;
+			if (slot.HasInventoryItem()) continue;
 
 			GameObject itemGO = Instantiate(inventoryItemPrefab, slot.transform);
 			InventoryItem item = itemGO.GetComponent<InventoryItem>();
@@ -79,6 +77,9 @@ public class Hotbar : MonoBehaviour
 		PlayerInventoryUI.OnOpened -= HideBackground;
 		PlayerInventoryUI.OnClosed -= ShowBackground;
 	}
+
+	void ShowBackground() { background.enabled = true; }
+	void HideBackground() { background.enabled = false; }
 
 	void OnSelectSlot1()
 	{

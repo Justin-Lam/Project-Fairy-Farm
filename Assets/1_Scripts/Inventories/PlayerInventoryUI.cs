@@ -39,14 +39,14 @@ public class PlayerInventoryUI : MonoBehaviour
 		OnOpened?.Invoke();
 	}
 
-	public bool TryStackItem(ItemSO itemSO)
+	public bool TryStackItem(Item itemSO)
 	{
 		foreach (InventorySlot slot in slots)
 		{
-			if (!slot.HasItem()) continue;
+			if (!slot.HasInventoryItem()) continue;
 
-			InventoryItem item = slot.GetItem();
-			if (item.itemSO == itemSO && item.amount < itemSO.maxStackSize)
+			InventoryItem item = slot.GetInventoryItem();
+			if (item.item == itemSO && item.amount < itemSO.maxStackSize)
 			{
 				item.IncrementAmount();
 				return true;
@@ -55,11 +55,11 @@ public class PlayerInventoryUI : MonoBehaviour
 
 		return false;
 	}
-	public bool TryCreateStack(ItemSO itemSO)
+	public bool TryCreateStack(Item itemSO)
 	{
 		foreach (InventorySlot slot in slots)
 		{
-			if (slot.HasItem()) continue;
+			if (slot.HasInventoryItem()) continue;
 
 			GameObject itemGO = Instantiate(inventoryItemPrefab, slot.transform);
 			InventoryItem item = itemGO.GetComponent<InventoryItem>();

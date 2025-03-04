@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Attack",
+                    "name": "Use Item",
                     "type": "Button",
                     "id": "e324ef34-c561-43bd-923c-5bbc52c4aa93",
                     "expectedControlType": "",
@@ -107,7 +107,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "Use Item",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

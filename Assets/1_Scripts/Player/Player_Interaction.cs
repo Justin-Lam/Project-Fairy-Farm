@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class Player_Interaction : MonoBehaviour
 {
-	[SerializeField] float radius;
+	[SerializeField] CircleCollider2D range;
 	[SerializeField] LayerMask layersToCheck;
+	float radius;
 	bool canInteract = true;
 
 	void OnInteract()
@@ -37,6 +38,10 @@ public class Player_Interaction : MonoBehaviour
 		nearestInteractable?.Interact();
 	}
 
+	void Awake()
+	{
+		radius = range.radius;
+	}
 	void OnEnable()
 	{
 		PlayerInventoryUI.OnOpened += DisableInteract;
