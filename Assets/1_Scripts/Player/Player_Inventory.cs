@@ -6,21 +6,21 @@ public class Player_Inventory : MonoBehaviour
 {
 	[SerializeField] int hotbarSize;
 	[SerializeField] int inventorySize;
-	Item[] items;
-	float[] hotbarCooldownCounters;
+	ItemStack[] itemStacks;
 	int selectedItemIndex = 0;
+	float useItemCooldownCounter = 0;
 
 	public static Player_Inventory Instance { get; private set; } void InitSingleton() { if (Instance && Instance != this) Destroy(gameObject); else Instance = this; }
 
 	void OnUseItem()
 	{
-		Item selectedItem = items[selectedItemIndex];
+		Item selectedItem = itemStacks[selectedItemIndex].Item;
 
 		if (!selectedItem) return;
-		if (hotbarCooldownCounters[selectedItemIndex] > 0) return;
+		if (useItemCooldownCounter > 0) return;
 
 		selectedItem.Use();
-		hotbarCooldownCounters[selectedItemIndex] = selectedItem.UseCooldown;
+		useItemCooldownCounter = selectedItem.UseCooldown;
 	}
 
 	void OnScrollHotbar(InputValue iv)
@@ -28,88 +28,74 @@ public class Player_Inventory : MonoBehaviour
 		if (iv.Get<float>() > 0) selectedItemIndex = (selectedItemIndex + 1) % hotbarSize;
 		else if (iv.Get<float>() < 0) selectedItemIndex = (selectedItemIndex - 1 + hotbarSize) % hotbarSize;
 
-		if (items[selectedItemIndex]) Debug.Log($"Selected ({selectedItemIndex}): {items[selectedItemIndex].Name}");
-		else Debug.Log($"Selcted ({selectedItemIndex}): Null");
+		if (itemStacks[selectedItemIndex].Item) Debug.Log($"Selected index {selectedItemIndex}: {itemStacks[selectedItemIndex].Item}");
+		else Debug.Log($"Selected index {selectedItemIndex}: Empty");
 	}
 	void SelectHotbarSlot(int num)
 	{
 		selectedItemIndex = num - 1;
 
-		if (items[selectedItemIndex]) Debug.Log($"Selected ({selectedItemIndex}): {items[selectedItemIndex].Name}");
-		else Debug.Log($"Selcted ({selectedItemIndex}): Null");
+		if (itemStacks[selectedItemIndex].Item) Debug.Log($"Selected index {selectedItemIndex}: {itemStacks[selectedItemIndex].Item}");
+		else Debug.Log($"Selected index {selectedItemIndex}: Empty");
 	}
 
-	public void AddOneItem(Item item) { Add(item, 1); }
-	public void AddFiveItems(Item item) { Add(item, 5); }
-	public void Add(Item item, int amount)
+	public void AddOneItem(Item item) { AddItem(item, 1); }
+	public void AddFiveItems(Item item) { AddItem(item, 5); }
+	public void DisplayInventory()
 	{
-		Item itemToAdd = item;
+		for (int i = 0; i < itemStacks.Length; i++)
+		{
+			if (itemStacks[i].Item) Debug.Log($"{i}: {itemStacks[i].Item} (x{itemStacks[i].Size})");
+			else Debug.Log($"{i}: Empty");
+		}
+	}
+
+	public void AddItem(Item item, int amount)
+	{
 		int remainingAmountToAdd = amount;
 
-		while (remainingAmountToAdd > 0)
+		// Try to stack
+		foreach (ItemStack stack in itemStacks)
 		{
-			// Try to stack
-			foreach (Item itemInInventory in items)
-			{
-				if (!itemInInventory) continue;
-				if (itemInInventory.Name != itemToAdd.Name) continue;
+			if (!stack.Item) continue;
+			if (stack.Item != item) continue;
 
-				int amountCanBeAdded = itemInInventory.MaxStackSize - itemInInventory.StackSize;
-				if (amountCanBeAdded <= 0) continue;
+			int amountCanBeAdded = item.MaxStackSize - stack.Size;
+			if (amountCanBeAdded <= 0) continue;
 
-				int amountToAdd = Math.Min(amountCanBeAdded, remainingAmountToAdd);
-				itemInInventory.AddToStack(amountToAdd);
-				remainingAmountToAdd -= amountToAdd;
+			int amountToAdd = Math.Min(amountCanBeAdded, remainingAmountToAdd);
+			stack.Add(amountToAdd);
+			remainingAmountToAdd -= amountToAdd;
 
-				if (remainingAmountToAdd <= 0) break;
-			}
-
-			if (remainingAmountToAdd <= 0) break;
-
-			// Try to create stack
-			for (int i = 0; i < items.Length; i++)	// can't use foreach loop because need to modify array
-			{
-				Item itemInInventory = items[i];
-
-				if (itemInInventory) continue;
-
-				items[i] = Instantiate(itemToAdd);
-				itemInInventory = items[i];
-				remainingAmountToAdd -= itemInInventory.StackSize;
-
-				if (remainingAmountToAdd <= 0) break;
-
-				int amountCanBeAdded = itemInInventory.MaxStackSize - itemInInventory.StackSize;
-				if (amountCanBeAdded <= 0) continue;
-
-				int amountToAdd = Math.Min(amountCanBeAdded, remainingAmountToAdd);
-				itemInInventory.AddToStack(amountToAdd);
-				remainingAmountToAdd -= amountToAdd;
-
-				if (remainingAmountToAdd <= 0) break;
-			}
-
-			// Inventory cannot add remaining item(s)
-			if (remainingAmountToAdd > 0) Debug.LogWarning("NOTIFICATION: Player inventory was unable to add remaining items.");
-			break;
+			if (remainingAmountToAdd <= 0) return;
 		}
 
-		for (int i = 0; i < items.Length; i++)
+		// Try to create stack
+		foreach (ItemStack stack in itemStacks)
 		{
-			if (items[i]) Debug.Log($"{i}: {items[i].Name}, {items[i].StackSize}");
-			else Debug.Log($"{i}: Null");
-		}
+			if (stack.Item) continue;
+
+			int amountToAdd = Math.Min(item.MaxStackSize, remainingAmountToAdd);
+			stack.Set(item, amountToAdd);
+			remainingAmountToAdd -= amountToAdd;
+
+			if (remainingAmountToAdd <= 0) return;
+		}		
+
+		// Handle remaining items that inventory can't add
+		if (remainingAmountToAdd > 0) Debug.LogWarning("NOTIFICATION: Player inventory was unable to add remaining items.");
 	}
 
 	void Awake()
 	{
 		InitSingleton();
-		items = new Item[hotbarSize + inventorySize];
-		hotbarCooldownCounters = new float[hotbarSize];
+
+		itemStacks = new ItemStack[hotbarSize + inventorySize];
+		for (int i = 0; i < itemStacks.Length; i++) { itemStacks[i] = new ItemStack(); }
 	}
 	void Update()
 	{
-		for (int i = 0; i < hotbarCooldownCounters.Length; i++) if (hotbarCooldownCounters[i] > 0) hotbarCooldownCounters[i] -= Time.deltaTime;
+		if (useItemCooldownCounter > 0) useItemCooldownCounter -= Time.deltaTime;
 	}
 
 	void OnSelectHotbarSlot1() => SelectHotbarSlot(1);
