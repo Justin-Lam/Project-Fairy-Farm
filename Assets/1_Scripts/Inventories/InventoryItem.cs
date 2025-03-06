@@ -15,10 +15,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 		parentAfterDrag = transform.parent;	// in case item isn't dragged to a new slot and needs to be sent back
 		transform.SetParent(transform.root);
 	}
-	public void OnDrag(PointerEventData ed)
-	{
-		transform.position = Input.mousePosition;
-	}
+	public void OnDrag(PointerEventData ed) { transform.position = Input.mousePosition; }
 	public void OnEndDrag(PointerEventData ed)
 	{
 		image.raycastTarget = true;
