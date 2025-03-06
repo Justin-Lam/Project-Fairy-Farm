@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player_Movement_AccelerationBased : MonoBehaviour
+public class Player_Movement : MonoBehaviour
 {
 	[SerializeField] float maxVelocity;
 	[SerializeField] float acceleration;
@@ -55,13 +55,13 @@ public class Player_Movement_AccelerationBased : MonoBehaviour
 	}
 	void OnEnable()
 	{
-		PlayerInventoryUI.OnOpened += DisableMovement;
-		PlayerInventoryUI.OnClosed += EnableMovement;
+		PlayerInventoryAndHotbar.OnInventoryOpened += DisableMovement;
+		PlayerInventoryAndHotbar.OnInventoryClosed += EnableMovement;
 	}
 	void OnDisable()
 	{
-		PlayerInventoryUI.OnOpened -= DisableMovement;
-		PlayerInventoryUI.OnClosed -= EnableMovement;
+		PlayerInventoryAndHotbar.OnInventoryOpened -= DisableMovement;
+		PlayerInventoryAndHotbar.OnInventoryClosed -= EnableMovement;
 	}
 	void EnableMovement()
 	{

@@ -44,13 +44,13 @@ public class Player_Interaction : MonoBehaviour
 	}
 	void OnEnable()
 	{
-		PlayerInventoryUI.OnOpened += DisableInteract;
-		PlayerInventoryUI.OnClosed += EnableInteract;
+		PlayerInventoryAndHotbar.OnInventoryOpened += DisableInteract;
+		PlayerInventoryAndHotbar.OnInventoryClosed += EnableInteract;
 	}
 	void OnDisable()
 	{
-		PlayerInventoryUI.OnOpened -= DisableInteract;
-		PlayerInventoryUI.OnClosed -= EnableInteract;
+		PlayerInventoryAndHotbar.OnInventoryOpened -= DisableInteract;
+		PlayerInventoryAndHotbar.OnInventoryClosed -= EnableInteract;
 	}
 	void EnableInteract()
 	{

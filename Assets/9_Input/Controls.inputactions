@@ -356,11 +356,11 @@
             ]
         },
         {
-            "name": "Player Inventory",
+            "name": "UI",
             "id": "c23e0c0d-2217-465a-8631-b336e40c2234",
             "actions": [
                 {
-                    "name": "Toggle",
+                    "name": "Toggle Player Inventory",
                     "type": "Button",
                     "id": "dfacfc54-a3c7-49d9-8692-8cd236f75ca9",
                     "expectedControlType": "",
@@ -386,7 +386,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Toggle",
+                    "action": "Toggle Player Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
