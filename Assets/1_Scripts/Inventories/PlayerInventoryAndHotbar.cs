@@ -6,6 +6,7 @@ public class PlayerInventoryAndHotbar : MonoBehaviour
 {
 	[Header("Inventory & Hotbar")]
 	[SerializeField] InventorySlot[] slots;
+	[SerializeField] InventoryItem inventoryItemPrefab;
 
 	[Header("Inventory")]
 	[SerializeField] Canvas inventoryCanvas;

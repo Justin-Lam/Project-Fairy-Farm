@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInventoryUI : MonoBehaviour
-{
+{	
+	// Done vvv
 	[SerializeField] GameObject inventoryItemPrefab;
 	Canvas canvas;
 	InventorySlot[] slots;
@@ -32,6 +33,7 @@ public class PlayerInventoryUI : MonoBehaviour
 			OnClosed?.Invoke();
 		}
 	}
+	// Done ^^^
 
 	void Open()
 	{

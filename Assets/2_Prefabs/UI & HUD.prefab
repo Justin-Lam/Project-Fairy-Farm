@@ -795,6 +795,7 @@ MonoBehaviour:
   - {fileID: 181491577763046902}
   - {fileID: 1802005263281991793}
   - {fileID: 3223241205706222619}
+  inventoryItemPrefab: {fileID: 2104149434688606929, guid: 9474ee943cff82042807b1e8dbbcf30e, type: 3}
   inventoryCanvas: {fileID: 7905607284599749028}
   hotbarBackground: {fileID: 6291730927112073488}
   indicator: {fileID: 2855557053134416728}
