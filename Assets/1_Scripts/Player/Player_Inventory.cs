@@ -6,35 +6,35 @@ public class Player_Inventory : MonoBehaviour
 {
 	[SerializeField] int hotbarSize;
 	[SerializeField] int inventorySize;
-	ItemStack[] itemStacks;
-	int selectedItemIndex = 0;
-	float useItemCooldownCounter = 0;
 
 	PlayerInventoryAndHotbar ui;
+	InventorySlot[] slots;
+	int selectedHotbarSlotIndex = 0;
+	float useItemCooldownCounter = 0;
 
 	public static Player_Inventory Instance { get; private set; } void InitSingleton() { if (Instance && Instance != this) Destroy(gameObject); else Instance = this; }
 
 	void OnUseItem()
 	{
-		Item selectedItem = itemStacks[selectedItemIndex].Item;
-
-		if (!selectedItem) return;
+		InventorySlot slot = slots[selectedHotbarSlotIndex];
+		if (slot.IsEmpty) return;
 		if (useItemCooldownCounter > 0) return;
 
+		Item selectedItem = slot.ItemStack.Item;
 		selectedItem.Use();
 		useItemCooldownCounter = selectedItem.UseCooldown;
 	}
 
 	void OnScrollHotbar(InputValue iv)
 	{
-		if (iv.Get<float>() > 0) selectedItemIndex = (selectedItemIndex + 1) % hotbarSize;
-		else if (iv.Get<float>() < 0) selectedItemIndex = (selectedItemIndex - 1 + hotbarSize) % hotbarSize;
-		ui.MoveHotbarIndicatorToSlot(selectedItemIndex);
+		if (iv.Get<float>() > 0) selectedHotbarSlotIndex = (selectedHotbarSlotIndex + 1) % hotbarSize;
+		else if (iv.Get<float>() < 0) selectedHotbarSlotIndex = (selectedHotbarSlotIndex - 1 + hotbarSize) % hotbarSize;
+		ui.MoveHotbarIndicatorToSlot(selectedHotbarSlotIndex);
 	}
 	void SelectHotbarSlot(int num)
 	{
-		selectedItemIndex = num - 1;
-		ui.MoveHotbarIndicatorToSlot(selectedItemIndex);
+		selectedHotbarSlotIndex = num - 1;
+		ui.MoveHotbarIndicatorToSlot(selectedHotbarSlotIndex);
 	}
 
 	public void AddOneItem(Item item) { AddItem(item, 1); }
@@ -45,37 +45,29 @@ public class Player_Inventory : MonoBehaviour
 		int remainingAmountToAdd = amount;
 
 		// Try to stack
-		for (int i = 0; i < itemStacks.Length; i++)
+		foreach (InventorySlot slot in slots)
 		{
-			ItemStack stack = itemStacks[i];
+			if (slot.IsEmpty) continue;
+			if (slot.ItemStack.Item != item) continue;
 
-			if (!stack.Item) continue;
-			if (stack.Item != item) continue;
-
-			int amountCanBeAdded = item.MaxStackSize - stack.Size;
+			int amountCanBeAdded = item.MaxStackSize - slot.ItemStack.Size;
 			if (amountCanBeAdded <= 0) continue;
 
 			int amountToAdd = Math.Min(amountCanBeAdded, remainingAmountToAdd);
-			stack.Add(amountToAdd);
+			slot.ItemStack.AddToStack(amountToAdd);
 			remainingAmountToAdd -= amountToAdd;
-
-			ui.UpdateStackSizeTextAtSlot(i, stack.Size);
 
 			if (remainingAmountToAdd <= 0) return;
 		}
 
 		// Try to create stack
-		for (int i = 0; i < itemStacks.Length; i++)
+		foreach (InventorySlot slot in slots)
 		{
-			ItemStack stack = itemStacks[i];
-
-			if (stack.Item) continue;
+			if (!slot.IsEmpty) continue;
 
 			int amountToAdd = Math.Min(item.MaxStackSize, remainingAmountToAdd);
-			stack.Set(item, amountToAdd);
+			slot.CreateItemStack(item, amountToAdd);
 			remainingAmountToAdd -= amountToAdd;
-
-			ui.CreateItemAtSlot(i, stack);
 
 			if (remainingAmountToAdd <= 0) return;
 		}		
@@ -87,13 +79,11 @@ public class Player_Inventory : MonoBehaviour
 	void Awake()
 	{
 		InitSingleton();
-
-		itemStacks = new ItemStack[hotbarSize + inventorySize];
-		for (int i = 0; i < itemStacks.Length; i++) { itemStacks[i] = new ItemStack(); }
 	}
 	void Start()
 	{
 		ui = PlayerInventoryAndHotbar.Instance;
+		slots = PlayerInventoryAndHotbar.Instance.slots;
 	}
 	void Update()
 	{

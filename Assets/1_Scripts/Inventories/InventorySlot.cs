@@ -3,13 +3,12 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
-	[SerializeField] InventoryItem inventoryItemPrefab;
+	[SerializeField] ItemStack itemStackPrefab;
 
-	public void CreateItem(ItemStack stack) { Instantiate(inventoryItemPrefab, transform).Init(stack); }
-	public void UpdateStackSizeText(int stackSize) { GetComponentInChildren<InventoryItem>().UpdateStackSizeText(stackSize); }
+	public ItemStack ItemStack => GetComponentInChildren<ItemStack>();
+	public bool IsEmpty => transform.childCount == 0;
 
-	public void OnDrop(PointerEventData ed)
-	{
-		if (transform.childCount == 0) ed.pointerDrag.GetComponent<InventoryItem>().parentAfterDrag = transform;
-	}
+	public void CreateItemStack(Item item, int stackSize) { Instantiate(itemStackPrefab, transform).Init(item, stackSize); }
+
+	public void OnDrop(PointerEventData ed) { if (IsEmpty) ed.pointerDrag.GetComponent<ItemStack>().parentAfterDrag = transform; }
 }

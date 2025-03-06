@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class PlayerInventoryAndHotbar : MonoBehaviour
 {
-	[Header("Inventory & Hotbar")]
-	[SerializeField] InventorySlot[] slots;
+	[field: Header("Inventory & Hotbar")]
+	[field: SerializeField] public InventorySlot[] slots { get; private set; }
 
 	[Header("Inventory")]
 	[SerializeField] Canvas inventoryCanvas;
@@ -24,10 +24,7 @@ public class PlayerInventoryAndHotbar : MonoBehaviour
 		if (inventoryCanvas.enabled) CloseInventory();
 		else OpenInventory();
 	}
-	void OnExit()
-	{
-		if (inventoryCanvas.enabled) CloseInventory();
-	}
+	void OnExit() { if (inventoryCanvas.enabled) CloseInventory(); }
 	void OpenInventory()
 	{
 		inventoryCanvas.enabled = true;
@@ -40,9 +37,6 @@ public class PlayerInventoryAndHotbar : MonoBehaviour
 		hotbarBackground.enabled = true;
 		OnInventoryClosed?.Invoke();
 	}
-
-	public void CreateItemAtSlot(int index, ItemStack stack) { slots[index].CreateItem(stack); }
-	public void UpdateStackSizeTextAtSlot(int index, int stackSize) { slots[index].UpdateStackSizeText(stackSize); }
 
 	public void MoveHotbarIndicatorToSlot(int index) { indicator.transform.position = slots[index].transform.position; }
 
