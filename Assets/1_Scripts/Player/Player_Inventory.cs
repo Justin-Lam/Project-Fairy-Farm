@@ -27,16 +27,12 @@ public class Player_Inventory : MonoBehaviour
 	{
 		if (iv.Get<float>() > 0) selectedItemIndex = (selectedItemIndex + 1) % hotbarSize;
 		else if (iv.Get<float>() < 0) selectedItemIndex = (selectedItemIndex - 1 + hotbarSize) % hotbarSize;
-
-		if (itemStacks[selectedItemIndex].Item) Debug.Log($"Selected index {selectedItemIndex}: {itemStacks[selectedItemIndex].Item}");
-		else Debug.Log($"Selected index {selectedItemIndex}: Empty");
+		Hotbar.Instance.MoveIndicatorToSlot(selectedItemIndex);
 	}
 	void SelectHotbarSlot(int num)
 	{
 		selectedItemIndex = num - 1;
-
-		if (itemStacks[selectedItemIndex].Item) Debug.Log($"Selected index {selectedItemIndex}: {itemStacks[selectedItemIndex].Item}");
-		else Debug.Log($"Selected index {selectedItemIndex}: Empty");
+		Hotbar.Instance.MoveIndicatorToSlot(selectedItemIndex);
 	}
 
 	public void AddOneItem(Item item) { AddItem(item, 1); }
