@@ -6,7 +6,6 @@ public class PlayerInventoryAndHotbar : MonoBehaviour
 {
 	[Header("Inventory & Hotbar")]
 	[SerializeField] InventorySlot[] slots;
-	[SerializeField] InventoryItem inventoryItemPrefab;
 
 	[Header("Inventory")]
 	[SerializeField] Canvas inventoryCanvas;
@@ -22,7 +21,6 @@ public class PlayerInventoryAndHotbar : MonoBehaviour
 
 	void OnTogglePlayerInventory()
 	{
-		Debug.Log("hi");
 		if (inventoryCanvas.enabled) CloseInventory();
 		else OpenInventory();
 	}
@@ -42,6 +40,9 @@ public class PlayerInventoryAndHotbar : MonoBehaviour
 		hotbarBackground.enabled = true;
 		OnInventoryClosed?.Invoke();
 	}
+
+	public void CreateInventoryItemAtSlot(int index, ItemStack stack) { slots[index].CreateItem(stack); }
+	public void UpdateInventoryItemStackSizeTextAtSlot(int index, int stackSize) { slots[index].UpdateItemStackSizeText(stackSize); }
 
 	public void MoveHotbarIndicatorToSlot(int index) { indicator.transform.position = slots[index].transform.position; }
 

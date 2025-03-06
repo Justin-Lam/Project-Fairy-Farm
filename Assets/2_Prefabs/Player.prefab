@@ -338,4 +338,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hotbarSize: 10
-  inventorySize: 0
+  inventorySize: 30

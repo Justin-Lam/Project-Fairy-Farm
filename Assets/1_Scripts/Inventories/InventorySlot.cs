@@ -3,14 +3,10 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
-	public bool HasInventoryItem()
-	{
-		return transform.childCount > 0;
-	}
-	public InventoryItem GetInventoryItem()
-	{
-		return GetComponentInChildren<InventoryItem>();
-	}
+	[SerializeField] InventoryItem inventoryItemPrefab;
+
+	public void CreateItem(ItemStack stack) { Instantiate(inventoryItemPrefab, transform).Init(stack); }
+	public void UpdateItemStackSizeText(int stackSize) { GetComponentInChildren<InventoryItem>().UpdateStackSizeText(stackSize); }
 
 	public void OnDrop(PointerEventData ed)
 	{

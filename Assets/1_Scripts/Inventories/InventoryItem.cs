@@ -5,31 +5,9 @@ using TMPro;
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-	Image image;
-	TMP_Text amountText;
-
-	[HideInInspector] public Item item {  get; private set; }
-	[HideInInspector] public int amount { get; private set; } = 1;
 	[HideInInspector] public Transform parentAfterDrag; // to ensure item is drawn over slots
-
-	public void Set(Item itemSO)
-	{
-		this.item = itemSO;
-		image.sprite = itemSO.Sprite;
-		RefreshAmountText();
-	}
-
-	void RefreshAmountText()
-	{
-		if (amount > 1) amountText.text = amount.ToString();
-		else amountText.text = "";  // don't show
-	}
-
-	public void IncrementAmount()
-	{
-		amount++;
-		RefreshAmountText();
-	}
+	Image image;
+	TMP_Text stackSizeText;
 
 	public void OnBeginDrag(PointerEventData ed)
 	{
@@ -48,9 +26,20 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 		transform.position = parentAfterDrag.position;
 	}
 
+	public void Init(ItemStack itemStack)
+	{
+		image.sprite = itemStack.Item.Sprite;
+		UpdateStackSizeText(itemStack.Size);
+	}
+	public void UpdateStackSizeText(int stackSize)
+	{
+		if (stackSize > 1) stackSizeText.text = stackSize.ToString();
+		else stackSizeText.text = "";
+	}
+
 	void Awake()
 	{
 		image = GetComponent<Image>();
-		amountText = GetComponentInChildren<TMP_Text>();
+		stackSizeText = GetComponentInChildren<TMP_Text>();
 	}
 }

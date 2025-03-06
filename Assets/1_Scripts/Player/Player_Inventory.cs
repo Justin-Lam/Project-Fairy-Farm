@@ -51,8 +51,10 @@ public class Player_Inventory : MonoBehaviour
 		int remainingAmountToAdd = amount;
 
 		// Try to stack
-		foreach (ItemStack stack in itemStacks)
+		for (int i = 0; i < itemStacks.Length; i++)
 		{
+			ItemStack stack = itemStacks[i];
+
 			if (!stack.Item) continue;
 			if (stack.Item != item) continue;
 
@@ -63,17 +65,23 @@ public class Player_Inventory : MonoBehaviour
 			stack.Add(amountToAdd);
 			remainingAmountToAdd -= amountToAdd;
 
+			PlayerInventoryAndHotbar.Instance.UpdateInventoryItemStackSizeTextAtSlot(i, stack.Size);
+
 			if (remainingAmountToAdd <= 0) return;
 		}
 
 		// Try to create stack
-		foreach (ItemStack stack in itemStacks)
+		for (int i = 0; i < itemStacks.Length; i++)
 		{
+			ItemStack stack = itemStacks[i];
+
 			if (stack.Item) continue;
 
 			int amountToAdd = Math.Min(item.MaxStackSize, remainingAmountToAdd);
 			stack.Set(item, amountToAdd);
 			remainingAmountToAdd -= amountToAdd;
+
+			PlayerInventoryAndHotbar.Instance.CreateInventoryItemAtSlot(i, stack);
 
 			if (remainingAmountToAdd <= 0) return;
 		}		

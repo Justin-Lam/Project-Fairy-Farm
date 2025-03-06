@@ -22,10 +22,10 @@ public class ChestInventoryUI : MonoBehaviour
 	}
 	void OnEnable()
 	{
-		PlayerInventoryUI.OnClosed += Close;
+		//PlayerInventoryUI.OnClosed += Close;
 	}
 	void OnDisable()
 	{
-		PlayerInventoryUI.OnClosed -= Close;
+		//PlayerInventoryUI.OnClosed -= Close;
 	}
 }
