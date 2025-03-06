@@ -27,12 +27,12 @@ public class Player_Inventory : MonoBehaviour
 	{
 		if (iv.Get<float>() > 0) selectedItemIndex = (selectedItemIndex + 1) % hotbarSize;
 		else if (iv.Get<float>() < 0) selectedItemIndex = (selectedItemIndex - 1 + hotbarSize) % hotbarSize;
-		Hotbar.Instance.MoveIndicatorToSlot(selectedItemIndex);
+		PlayerInventoryAndHotbar.Instance.MoveHotbarIndicatorToSlot(selectedItemIndex);
 	}
 	void SelectHotbarSlot(int num)
 	{
 		selectedItemIndex = num - 1;
-		Hotbar.Instance.MoveIndicatorToSlot(selectedItemIndex);
+		PlayerInventoryAndHotbar.Instance.MoveHotbarIndicatorToSlot(selectedItemIndex);
 	}
 
 	public void AddOneItem(Item item) { AddItem(item, 1); }
