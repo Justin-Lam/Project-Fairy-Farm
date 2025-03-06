@@ -10,6 +10,8 @@ public class Player_Inventory : MonoBehaviour
 	int selectedItemIndex = 0;
 	float useItemCooldownCounter = 0;
 
+	PlayerInventoryAndHotbar ui;
+
 	public static Player_Inventory Instance { get; private set; } void InitSingleton() { if (Instance && Instance != this) Destroy(gameObject); else Instance = this; }
 
 	void OnUseItem()
@@ -27,24 +29,16 @@ public class Player_Inventory : MonoBehaviour
 	{
 		if (iv.Get<float>() > 0) selectedItemIndex = (selectedItemIndex + 1) % hotbarSize;
 		else if (iv.Get<float>() < 0) selectedItemIndex = (selectedItemIndex - 1 + hotbarSize) % hotbarSize;
-		PlayerInventoryAndHotbar.Instance.MoveHotbarIndicatorToSlot(selectedItemIndex);
+		ui.MoveHotbarIndicatorToSlot(selectedItemIndex);
 	}
 	void SelectHotbarSlot(int num)
 	{
 		selectedItemIndex = num - 1;
-		PlayerInventoryAndHotbar.Instance.MoveHotbarIndicatorToSlot(selectedItemIndex);
+		ui.MoveHotbarIndicatorToSlot(selectedItemIndex);
 	}
 
 	public void AddOneItem(Item item) { AddItem(item, 1); }
 	public void AddFiveItems(Item item) { AddItem(item, 5); }
-	public void DisplayInventory()
-	{
-		for (int i = 0; i < itemStacks.Length; i++)
-		{
-			if (itemStacks[i].Item) Debug.Log($"{i}: {itemStacks[i].Item} (x{itemStacks[i].Size})");
-			else Debug.Log($"{i}: Empty");
-		}
-	}
 
 	public void AddItem(Item item, int amount)
 	{
@@ -65,7 +59,7 @@ public class Player_Inventory : MonoBehaviour
 			stack.Add(amountToAdd);
 			remainingAmountToAdd -= amountToAdd;
 
-			PlayerInventoryAndHotbar.Instance.UpdateInventoryItemStackSizeTextAtSlot(i, stack.Size);
+			ui.UpdateStackSizeTextAtSlot(i, stack.Size);
 
 			if (remainingAmountToAdd <= 0) return;
 		}
@@ -81,7 +75,7 @@ public class Player_Inventory : MonoBehaviour
 			stack.Set(item, amountToAdd);
 			remainingAmountToAdd -= amountToAdd;
 
-			PlayerInventoryAndHotbar.Instance.CreateInventoryItemAtSlot(i, stack);
+			ui.CreateItemAtSlot(i, stack);
 
 			if (remainingAmountToAdd <= 0) return;
 		}		
@@ -96,6 +90,10 @@ public class Player_Inventory : MonoBehaviour
 
 		itemStacks = new ItemStack[hotbarSize + inventorySize];
 		for (int i = 0; i < itemStacks.Length; i++) { itemStacks[i] = new ItemStack(); }
+	}
+	void Start()
+	{
+		ui = PlayerInventoryAndHotbar.Instance;
 	}
 	void Update()
 	{

@@ -41,8 +41,8 @@ public class PlayerInventoryAndHotbar : MonoBehaviour
 		OnInventoryClosed?.Invoke();
 	}
 
-	public void CreateInventoryItemAtSlot(int index, ItemStack stack) { slots[index].CreateItem(stack); }
-	public void UpdateInventoryItemStackSizeTextAtSlot(int index, int stackSize) { slots[index].UpdateItemStackSizeText(stackSize); }
+	public void CreateItemAtSlot(int index, ItemStack stack) { slots[index].CreateItem(stack); }
+	public void UpdateStackSizeTextAtSlot(int index, int stackSize) { slots[index].UpdateStackSizeText(stackSize); }
 
 	public void MoveHotbarIndicatorToSlot(int index) { indicator.transform.position = slots[index].transform.position; }
 
